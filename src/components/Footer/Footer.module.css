@@ -1,0 +1,43 @@
+.contanier {
+  position: absolute;
+  bottom: 0px;
+  height: 50px;
+  width: 100%;
+  background-color: var(--headerColor);
+  font-size: 14px;
+  color: #d4d4d4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-size: 11px;
+}
+.linkVitalik {
+  text-decoration: underline;
+  transition: all 200ms;
+}
+.linkVitalik:hover,
+.linkVitalik:focus {
+  text-decoration: underline;
+  font-size: 15px;
+  color: aliceblue;
+  text-shadow: 1px 1px #1d1818;
+}
+.myLink {
+  text-decoration: underline;
+  transition: all 200ms;
+}
+.myLink:hover,
+.myLink:focus {
+  text-decoration: underline;
+  font-size: 16px;
+  color: aliceblue;
+  transform: scale(1.1);
+  text-shadow: 1px 1px #1d1818;
+}
+@media (min-width: 450px) {
+  .contanier {
+    font-size: 14px;
+  }
+}
+

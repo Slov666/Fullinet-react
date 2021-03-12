@@ -1,0 +1,7 @@
+:root {
+  --headerColor: #769abd;
+  --primaryColor: #fff761;;
+  --secondaryColor: #ec8e3d;
+
+  --trans: all 0.25s ease-in-out;
+}

@@ -1,0 +1,29 @@
+.container {
+  min-height: 100vh;
+  position: relative;
+  background-image: url(../../assets/img/background-mobile.jpg);
+}
+@media (min-width: 320px) and (max-width: 767px) {
+  .container {
+    margin: 0 auto;
+    padding: 0px;
+    background-image: url(../../assets/img/background-mobile.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+}
+
+.background {
+  overflow: hidden;
+  /* background-color: #e7eaf2; */
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: -1;
+}
+
+
+

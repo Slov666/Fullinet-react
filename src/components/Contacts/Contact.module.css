@@ -1,0 +1,10 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 260px;
+}
+.textfield__label{
+  color: rgb(219, 39, 39) !important;
+}
