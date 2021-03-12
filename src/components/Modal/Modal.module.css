@@ -1,0 +1,101 @@
+.modalBackdrop {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+.modalBase {
+  position: absolute;
+  width: 100%;
+  height: calc(100% - 60px);
+  top: 60px;
+  padding: 60px 20px;
+  background-color: var(--formColor);
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25)),
+    drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  overflow-y: auto;
+}
+
+.right,
+.left,
+.center,
+.centerSmall {
+  composes: modalBase;
+  
+}
+
+.closeBtn {
+  height: 18px;
+  width: 18px;
+
+  position: absolute;
+  top: 10px;
+  right: 5px;
+
+  background-image: url("../../assets/icons/Close.icon.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-color: transparent;
+}
+
+@media (min-width: 768px) {
+  .modalBackdrop {
+    background-color: rgba(0, 0, 0, 0.25);
+  }
+
+  .modalBase {
+    background-color: var(--whiteColor);
+    height: 100%;
+    top: 0;
+    width: 512px;
+    padding: 120px 50px 30px 30px;
+  }
+
+  .closeBtn {
+    right: 10px;
+  }
+
+  .right {
+    right: 0;
+  }
+  .left {
+    left: 0;
+  }
+
+  .center {
+    width: 688px;
+    height: 340px;
+    padding: 30px 50px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .centerSmall {
+    width: 400px;
+    height: 230px;
+    padding: 30px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+@media (min-width: 1280px) {
+  .modalBase {
+    width: 530px;
+  }
+
+  .center {
+    width: 933px;
+    min-height: 461px;
+  }
+
+  .centerSmall {
+    width: 400px;
+  }
+}

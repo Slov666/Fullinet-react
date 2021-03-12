@@ -5,7 +5,6 @@ import '../../utils/i18next';
 
 import TariffItem from './TariffItem';
 import { NavLink } from 'react-router-dom';
-import { logDOM } from '@testing-library/dom';
 
 export default function TableTariffs() {
   const { t } = useTranslation();
@@ -15,11 +14,28 @@ export default function TableTariffs() {
       <main className={styles.container}>
         {tariffs.map(({ name, cost, speed, id }, index) => (
           <>
-            {index === 0 && <p>{t('tariffs_title.title_wifi')}</p>}
-            {index === 3 && <p>{t('tariffs_title.title_Vita')}</p>}
-            {index === 6 && <p>{t('tariffs_title.title_Pirogiv')}</p>}
-            {index === 9 && <p>{t('tariffs_title.title_Damba')}</p>}
+            {index === 0 && (
+              <p className={styles.titleOfTariffs}>
+                {t('tariffs_title.title_wifi')}
+              </p>
+            )}
+            {index === 3 && (
+              <p className={styles.titleOfTariffs}>
+                {t('tariffs_title.title_Vita')}
+              </p>
+            )}
+            {index === 6 && (
+              <p className={styles.titleOfTariffs}>
+                {t('tariffs_title.title_Pirogiv')}
+              </p>
+            )}
+            {index === 9 && (
+              <p className={styles.titleOfTariffs}>
+                {t('tariffs_title.title_Damba')}
+              </p>
+            )}
             <NavLink
+            className={styles.card_container_link}
               key={id}
               to={{
                 pathname: `/tariff`,

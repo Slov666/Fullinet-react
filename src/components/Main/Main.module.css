@@ -13,7 +13,21 @@
 .contact_info_location {
   margin: 0px 0px 20px;
 }
-
+.contact_info_schedule {
+  margin-bottom: 12px;
+  background-color: rgba(241, 241, 241, 0.4);
+  box-shadow: 0 3px 8px 0 rgb(0 0 0 / 20%);
+  text-align: center;
+  font-weight: 400;
+  color: #555252;
+  text-transform: uppercase;
+}
+.contact_info_contacts {
+  composes: contact_info_schedule;
+}
+.contact_info_contact {
+  text-decoration: underline;
+}
 .subtitle {
   padding: 0px 0px 15px;
   margin-bottom: 15px;
@@ -43,7 +57,11 @@
     padding-top: 80px;
   }
 }
-@media (min-width: 980px) {
+@media (min-width: 1000px) {
+  .contact_info {
+    width: 400px;
+    margin: 0 auto;
+  }
 }
 @media (min-width: 1280px) {
   .subtitle {

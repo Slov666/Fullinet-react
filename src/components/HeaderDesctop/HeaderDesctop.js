@@ -13,18 +13,6 @@ export default function HeaderDesctop() {
         <NavLink to={'/home'} exact>
           Главная
         </NavLink>
-        <NavLink to={'/tariffs'} exact>
-          Тарифы
-        </NavLink>
-        <NavLink to={'/connect'} exact>
-          о подключении
-        </NavLink>
-        <NavLink to={'/license'} exact>
-          Лицензия
-        </NavLink>
-        <NavLink to={'/contacts'} exact>
-          Контакты
-        </NavLink>
         <a href="https://my.fullinet.com/cgi-bin/stat.pl">Кабинет</a>
       </div>
     </nav>

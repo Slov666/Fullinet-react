@@ -1,7 +1,8 @@
 :root {
   --headerColor: #769abd;
-  --primaryColor: #fff761;;
+  --primaryColor: #fff761;
   --secondaryColor: #ec8e3d;
+  --whiteColor: #fff;
 
   --trans: all 0.25s ease-in-out;
 }

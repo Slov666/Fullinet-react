@@ -1,5 +1,11 @@
-import React from "react";
-import Main from "../../components/Main/Main";
+import React from 'react';
+import Tariffs from '../../components/Tariffs/Tariffs';
+import Main from '../../components/Main/Main';
 export default function HomeView() {
-  return <Main />;
+  return (
+    <>
+      <Main />
+      <Tariffs />
+    </>
+  );
 }

@@ -2,15 +2,6 @@ import { lazy } from 'react';
 // eslint-disable-next-line import/no-anonymous-default-export
 export default [
   {
-    path: '/tariffs',
-    label: 'tariffs',
-    component: lazy(() =>
-      import(
-        '../views/TariffsView/TariffsView' /*webpackChunkName: "tariffs" */
-      )
-    ),
-  },
-  {
     path: '/tariff/',
     label: 'tariff',
     component: lazy(() =>

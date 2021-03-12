@@ -1,30 +1,58 @@
 import React from 'react';
-import Button from '@material-ui/core/Button';
+import useToggle from '../../hooks/useToggle';
+import { useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import '../../utils/i18next';
+
+import { setModalConnectNow } from '../../redux/modal/modalAction';
+
+import Button from '@material-ui/core/Button';
 
 import style from './Main.module.css';
 
 export default function Main() {
+  const [isOpenSchedule, onClickSchedule] = useToggle();
+  const [isOpenContacts, onClickContacts] = useToggle();
+  const dispatch = useDispatch();
   const { t } = useTranslation();
 
   return (
     <main className={style.container}>
       <section className={style.primaryContainer}>
         <div className={style.contact_info}>
-          <p>{t('contact_info.work_schedule')}</p>
-          <p className={style.contact_info_location}>
-            {' '}
-            {t('contact_info.location')}
+          <p onClick={onClickSchedule} className={style.contact_info_schedule}>
+            {t('contact_info.work_schedule')}
           </p>
-          <a href="tel: 380442330290">{t('contact_info.phone1')}</a>
-          <a href="tel: 380631711886">{t('contact_info.phone2')}</a>
-          <a href="tel: 380632330290">{t('contact_info.phone3')}</a>
+
+          {isOpenSchedule && (
+            <>
+              <p>{t('contact_info.work_schedule_time')}</p>
+              <p>{t('contact_info.dayOff')}</p>
+              <p className={style.contact_info_location}>
+                {t('contact_info.location')}
+              </p>
+            </>
+          )}
+          <p onClick={onClickContacts} className={style.contact_info_contacts}>
+            {t('contact_info.contacts')}
+          </p>
+          {isOpenContacts && (
+            <div className={style.contact_info_contact}>
+              <a href="tel: 380442330290">{t('contact_info.phone1')}</a>
+              <a href="tel: 380631711886">{t('contact_info.phone2')}</a>
+              <a href="tel: 380632330290">{t('contact_info.phone3')}</a>
+            </div>
+          )}
         </div>
       </section>
 
       <section className={style.secondaryContainer}>
-        <Button variant="contained" color="primary" className={style.button}>
+        <Button
+          variant="contained"
+          color="primary"
+          className={style.button}
+          onClick={() => dispatch(setModalConnectNow(true))}
+        >
           Замовити зараз
         </Button>
       </section>

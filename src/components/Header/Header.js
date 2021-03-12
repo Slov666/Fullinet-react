@@ -34,14 +34,6 @@ const listItems = [
   },
   {
     link: (
-      <NavLink to={'/tariffs'} exact>
-        Тарифы
-      </NavLink>
-    ),
-    icon: <AccountBalanceWalletIcon />,
-  },
-  {
-    link: (
       <NavLink to={'/license'} exact>
         Лицензия
       </NavLink>
