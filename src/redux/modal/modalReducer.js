@@ -1,12 +1,12 @@
 import { createReducer } from '@reduxjs/toolkit';
 import { combineReducers } from 'redux';
 
-import { setModalConnectNow } from './modalAction';
+import { setModalConnect } from './modalAction';
 
-const modalConnectNow = createReducer(null, {
-  [setModalConnectNow]: (state, { payload }) => payload,
+const modalConnect = createReducer(null, {
+  [setModalConnect]: (state, { payload }) => payload,
 });
 
 export const modal = combineReducers({
-  modalConnectNow,
+  modalConnect,
 });

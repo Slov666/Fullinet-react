@@ -1,16 +1,47 @@
 .container {
-  padding: 15px 20px 45px;
+  padding: 15px 20px 213px;
   text-align: center;
 }
 .card__container {
   display: flex;
   align-items: center;
   justify-content: space-around;
-  height: 150px;
+  min-height: 172px;
   background-color: rgba(241, 241, 241, 0.4);
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   margin-bottom: 20px;
   border-radius: 3px;
+  transition: all 250ms;
+}
+.card__container:hover,
+.card__container:focus {
+  background-color: rgba(241, 241, 241, 0.6);
+}
+.card__container_flipped {
+  composes: card__container;
+  display: block;
+  text-align: center;
+  padding: 10px 0px 20px 30px;
+  line-height: 19px;
+}
+.card__container_ul {
+  text-align: left;
+  line-height: 24px;
+}
+.card__container_ul li {
+  padding: 0px 20px 0px 0px;
+}
+.card__container_ul li::before {
+  content: ' \25A0';
+  padding: 10px;
+  list-style: square;
+}
+.card__container_ul li:last-of-type {
+  margin-bottom: 5px;
+}
+.buttonContainer {
+  margin-bottom: 5px;
+  padding: 0px 25px 0px 0px;
 }
 .card__title {
   height: 110px;
@@ -34,12 +65,18 @@
   text-transform: uppercase;
   font-weight: 800;
 }
+.card__title__package {
+}
 .card__container:hover .card__title__package {
-  color: #5ca73e;
+  color: #3f51b5;
   transition: all 250ms;
 }
 
 .card__speed {
+  height: 104px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .titleOfTariffs {
   background-color: rgb(255 241 119 / 80%);
@@ -49,9 +86,53 @@
   border-radius: 4px;
   font-size: 18px;
 }
+.container__buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 50px;
+}
+.notIncluded {
+  margin-bottom: 12px;
+  background-color: rgba(243, 124, 124, 0.4);
+  box-shadow: 0 3px 8px 0 rgb(0 0 0 / 20%);
+  border-radius: 4px;
+  padding: 0px 0px 0px 10px;
+  font-weight: 600;
+  text-align: center;
+  color: #555252;
+  text-transform: uppercase;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: all 250ms;
+}
+.notIncluded:hover,
+.notIncluded:focus {
+  background-color: rgba(243, 124, 124, 0.6);
+}
+.notIncluded span {
+  margin: 0 auto;
+}
+.notIncluded_ul {
+  text-align: left;
+  line-height: 24px;
+  background-color: rgba(241, 241, 241, 0.4);
+  box-shadow: 0 3px 8px 0 rgb(0 0 0 / 20%);
+  max-width: 600px;
+}
+.notIncluded_ul li::before {
+  content: ' \25A0';
+  padding: 10px;
+  list-style: square;
+}
+.notIncluded_ul li {
+  padding: 10px;
+}
 @media (min-width: 767px) {
   .container {
-    padding: 70px 0px 100px;
+    padding: 70px 0px 188px;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -61,11 +142,19 @@
     margin: 0px 7px 35px 7px;
     padding: 10px;
   }
+  .card__container_ul {
+    padding: 0px 18px 0px;
+  }
   .titleOfTariffs {
     height: 44px;
     width: 600px;
-    text-align: center;
     margin: 0px 125px 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .notIncluded {
+    margin: 0px 162px 12px 162px;
   }
 }
 @media (min-width: 800px) {
@@ -91,8 +180,10 @@
   }
   .card__container {
     width: 350px;
-    height: 180px;
-    padding: 0;
+    min-height: 180px;
+  }
+  .notIncluded {
+    margin: 0px 262px 12px 262px;
   }
 }
 @media (min-width: 1296px) {
@@ -101,6 +192,9 @@
   }
 }
 @media (min-width: 1640px) {
+  .notIncluded {
+    margin: 0px 444px 12px ;
+  }
   .titleOfTariffs {
     margin: 0px 444px 25px;
     width: 766px;

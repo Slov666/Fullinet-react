@@ -1,3 +1,3 @@
 import { createAction } from '@reduxjs/toolkit';
 
-export const setModalConnectNow = createAction('modal/ConnectNow');
+export const setModalConnect= createAction('modal/ConnectNow');

@@ -1,4 +1,4 @@
-export const modalConnectNowSelector  = (state) => state.ui.modal.modalConnectNow
+export const modalConnectSelector  = (state) => state.ui.modal.modalConnect
 
 export const isAnyModalOpenSelector = (state) => {
     const values = Object.values(state.ui.modal);

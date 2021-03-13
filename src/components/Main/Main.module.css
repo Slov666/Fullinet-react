@@ -18,9 +18,23 @@
   background-color: rgba(241, 241, 241, 0.4);
   box-shadow: 0 3px 8px 0 rgb(0 0 0 / 20%);
   text-align: center;
+  padding: 0px 0px 0px 25px;
   font-weight: 400;
   color: #555252;
+  border-radius: 4px;
   text-transform: uppercase;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: all 250ms;
+}
+.contact_info_schedule:hover,
+.contact_info_schedule:focus {
+  background-color: rgba(241, 241, 241, 0.6);
+}
+.contact_info_schedule span {
+  margin: 0 auto;
 }
 .contact_info_contacts {
   composes: contact_info_schedule;
