@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 
 import style from './Layout.module.css';
@@ -7,8 +7,8 @@ import useMobile from '../../hooks/useMobile';
 import { isAnyModalOpenSelector } from '../../redux/modal/modalSelectors';
 
 import Header from '../Header/Header';
-import HeaderDesctop from '../HeaderDesctop/HeaderDesctop';
-import ModalConnectNow from '../../components/Modal/ModalComponents/ModalConnectNow';
+import HeaderDesctop from '../Header/HeaderDesctop';
+import ModalConnect from '../../components/Modal/ModalComponents/ModalConnect';
 import Footer from '../Footer/Footer';
 
 export default function Layout({ children }) {
@@ -20,16 +20,21 @@ export default function Layout({ children }) {
     position: 'fixed',
     top: `-${scrollY.current - 59}px`,
   });
+  isAnyModalOpen && window.scrollTo(0, parseInt(scrollY || '0') * -1);
 
+  const [locales, setLocales] = useState(null);
+  useEffect(() => {
+    setLocales(localStorage.getItem('i18nextLng'));
+  }, []);
   return (
     <>
-      {!isMobile ? <HeaderDesctop /> : <Header />}
+      {!isMobile ? <HeaderDesctop locales={locales} /> : <Header locales={locales} />}
       <div
-        style={shouldToChangeLayout ? styleWhenModalIsOpened : {}}
+        style={shouldToChangeLayout ? styleWhenModalIsOpened.current : {}}
         className={style.container}
       >
         {children}
-        <ModalConnectNow />
+        <ModalConnect />
         <Footer />
       </div>
     </>

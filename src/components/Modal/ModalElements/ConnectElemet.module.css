@@ -1,0 +1,23 @@
+.form {
+  display: flex;
+  flex-direction: column;
+}
+.tariff {
+  display: flex;
+  justify-content: center;
+}
+.abonent {
+  display: flex;
+  flex-direction: column;
+  width: 340px;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+.containerBtn {
+  margin: 0 auto;
+}
+@media (max-width: 768px) {
+  .abonent {
+    width: 280px;
+  }
+}

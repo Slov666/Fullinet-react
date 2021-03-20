@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './Tariffs.module.css';
 import useMobile from '../../hooks/useToggle';
 import { useDispatch } from 'react-redux';
-import {setModalConnect} from '../../redux/modal/modalAction';
+import { setModalConnect } from '../../redux/modal/modalAction';
 
 import { Scrollbars } from 'rc-scrollbars';
 import ReactCardFlip from 'react-card-flip';
@@ -40,7 +40,7 @@ export default function TariffItem({ cost, speed, name, about_wifi }) {
             </MyButton>
             <MyButton
               styles="details"
-              onClick={() => dispatch(setModalConnect(cost, speed, name))}
+              onClick={() => dispatch(setModalConnect({ cost, speed, name }))}
               variant="contained"
             >
               {t('ui.order')}

@@ -53,18 +53,7 @@
   transition: all 250ms;
 }
 .primaryContainer {
-  margin-bottom: 40px;
 }
-.secondaryContainer {
-}
-.button {
-  text-decoration: underline !important;
-  color: var(--primaryColor) !important;
-}
-.button span {
-  color: var(--primaryColor) !important;
-}
-/* background-image: linear-gradient(rgba(255,0,0,.5), rgba(255,245,215,.5)) */
 
 @media (min-width: 767px) {
   .container {

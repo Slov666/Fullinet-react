@@ -72,27 +72,6 @@ export default function Main() {
           </CSSTransition>
         </div>
       </section>
-
-      <section className={style.secondaryContainer}>
-        <Button
-          variant="contained"
-          color="primary"
-          className={style.button}
-          onClick={() => dispatch(setModalConnect(true))}
-        >
-          Замовити зараз
-        </Button>
-      </section>
-      {/* <h3 className={style.title}>{text("about.title")}</h3>
-      <ul className={style.container_subtitle}>
-        <li className={style.subtitle}>{text("about.part1")}</li>
-        <li className={style.subtitle}>{text("about.part2")}</li>
-        <li className={style.subtitle}>{text("about.part3")}</li>
-        <li className={style.subtitle}>{text("about.part4")}</li>
-        <li className={style.subtitle}>{text("about.part6")}</li>
-        <li className={style.subtitle}>{text("about.part5")}</li>
-      </ul>
-      <p className={style.subtitle_b}>{text("about.part7")}</p> */}
     </main>
   );
 }

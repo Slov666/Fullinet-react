@@ -132,7 +132,7 @@
 }
 @media (min-width: 767px) {
   .container {
-    padding: 70px 0px 188px;
+    padding: 18px 0px 188px;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;

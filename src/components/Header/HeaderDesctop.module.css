@@ -13,12 +13,26 @@
 .menu {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   color: #f0f8ff;
   text-transform: uppercase;
-  width: 176px;
+  width: 270px;
+}
+.menu a {
+  padding: 5% 18px;
+  transition: all 250ms;
+}
+.menu a:hover,
+.menu a:focus {
+  background-color: rgba(0, 0, 0, 0.2);
 }
 .logo {
-  color: #ffb101;
-  text-shadow: #332f1e 1px 0 0px;
-  font-size: 20px;
+  color: var(--primaryColor);
+  text-shadow: #332f1e 2px 0 0px;
+  font-size: 23px;
+  transition: all 350ms;
+}
+.logo:hover,
+.logo:focus {
+  transform: scale(1.05);
 }

@@ -3,7 +3,7 @@
   position: relative;
   background-image: url(../../assets/img/background-mobile.jpg);
 }
-@media (min-width: 320px) and (max-width: 767px) {
+@media (max-width: 767px) {
   .container {
     margin: 0 auto;
     padding: 0px;
@@ -13,7 +13,9 @@
     background-repeat: no-repeat;
   }
 }
-
+.container {
+  background-size: cover;
+}
 .background {
   overflow: hidden;
   /* background-color: #e7eaf2; */
@@ -24,6 +26,3 @@
   right: 0;
   z-index: -1;
 }
-
-
-

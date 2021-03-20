@@ -25,6 +25,11 @@
     "link_Vitalik": "© {{dateNow}} - Fullinet Інтернет - Оператор. всі права захищені.",
     "link_Slavik": "сайт створив"
   },
+  "form": {
+    "yourName": "Ваше ім'я",
+    "yourPhone": "Ваш номер телефону",
+    "yourAddress": "Ваша адреса"
+  },
   "ui": { "details": "Детальніше", "back": "Повернутися", "order": "Замовити" },
   "tariffs_title": {
     "package": "Пакет",

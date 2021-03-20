@@ -15,7 +15,7 @@ const useStylesFlip = makeStyles(() => ({
 //   },
 // }));
 
-export default function MyButton({ onClick, styles, children, ...props }) {
+export default function MyButton({ onClick, styles, children, ...other }) {
   const styledComponentFlip = useStylesFlip();
   let style;
   switch (styles) {
@@ -32,7 +32,7 @@ export default function MyButton({ onClick, styles, children, ...props }) {
       color="primary"
       className={style.root}
       onClick={onClick}
-      {...props}
+      {...other}
     >
       {children}
     </Button>

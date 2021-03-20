@@ -1,7 +1,37 @@
 @media (max-width: 767px) {
   .header {
+    display: flex;
+    justify-content: space-between;
     background-color: var(--headerColor);
     padding: 0;
-    /* box-shadow: 0px -2px 7px 8px rgba(57, 63, 72, 0.3); */
+    box-shadow: 0px -2px 7px 8px rgba(57, 63, 72, 0.3);
+  }
+}
+.buttonChangeLang {
+  background: transparent;
+  font-size: 16px;
+  padding: 5px;
+  margin: 0px 55px 0px 0px;
+  color: #ffffff;
+  text-shadow: 1px 1px #000000;
+  font-weight: 600;
+  transition: all 250ms;
+}
+.buttonChangeLang:hover,
+.buttonChangeLang:focus {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+@media(min-width: 767px){
+  .buttonChangeLang{
+    background: transparent;
+    font-size: 16px;
+    padding: 5% 15px;
+    color: #ffffff;
+    transition: all 250ms;
+    text-transform: uppercase;
+    margin: 0;
+    font-weight: 500;
+    text-shadow: 0px 0px #000000;
+
   }
 }

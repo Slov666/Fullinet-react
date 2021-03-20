@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import clsx from 'clsx';
 import { NavLink } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
@@ -10,10 +10,7 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import HomeIcon from '@material-ui/icons/Home';
-import ContactPhoneIcon from '@material-ui/icons/ContactPhone';
 import MailIcon from '@material-ui/icons/Mail';
-import AccountBalanceWalletIcon from '@material-ui/icons/AccountBalanceWallet';
-import NetworkCheckIcon from '@material-ui/icons/NetworkCheck';
 import GavelIcon from '@material-ui/icons/Gavel';
 import MenuIcon from '@material-ui/icons/Menu';
 import Typography from '@material-ui/core/Typography';
@@ -21,7 +18,6 @@ import { useTranslation } from 'react-i18next';
 import '../../utils/i18next';
 
 import style from './Header.module.css';
-import routes from '../../utils/routes';
 
 const listItems = [
   {
@@ -51,12 +47,24 @@ const useStyles = makeStyles({
 });
 
 export default function Header() {
+  const [locales, setLocales] = useState(null);
+
   const { t, i18n } = useTranslation();
   const changleLanguage = (lang) => {
     i18n.changeLanguage(lang);
   };
 
   const classes = useStyles();
+
+  const onClickLang = useCallback((e) => {
+    changleLanguage(e.target.id === 'ua' ? 'ru' : 'ua');
+    console.log(e.target);
+  });
+
+  useEffect(() => {
+    setLocales(localStorage.getItem('i18nextLng'));
+  }, [onClickLang]);
+
   const [state, setState] = React.useState({
     top: false,
     left: false,
@@ -100,7 +108,7 @@ export default function Header() {
       </List>
       <Divider />
       <List>
-      {/* в массив ниже могу добавить NavLink */}
+        {/* в массив ниже могу добавить NavLink */}
         {[<a href="https://my.fullinet.com/cgi-bin/stat.pl">Кабинет</a>].map(
           (text, index) => (
             <ListItem button key={index}>
@@ -117,8 +125,8 @@ export default function Header() {
   );
 
   return (
-    <div className={style.header}>
-      <React.Fragment key={<MenuIcon />}>
+    <header className={style.header}>
+      <nav key={<MenuIcon />}>
         <Button onClick={toggleDrawer(<MenuIcon />, true)}>
           {<MenuIcon style={{ color: '#fff' }} />}
         </Button>
@@ -137,9 +145,16 @@ export default function Header() {
         >
           {list(<MenuIcon />)}
         </Drawer>
-      </React.Fragment>
-      <button onClick={() => changleLanguage('ua')}>ua.......</button>
-      <button onClick={() => changleLanguage('ru')}>ru.......</button>
-    </div>
+      </nav>
+      <button
+        className={
+          (style.buttonChangeLang)
+        }
+        id={locales}
+        onClick={(e) => onClickLang(e)}
+      >
+        {locales === 'ua' ? 'Рус' : 'Укр'}
+      </button>
+    </header>
   );
 }

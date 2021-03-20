@@ -18,7 +18,7 @@ export default function TableTariffs() {
   return (
     <main className={styles.container}>
       {tariffs.map(({ name, cost, speed, about_wifi, id }, index) => (
-        <>
+        <React.Fragment key={id}>
           {index === 0 && (
             <p className={styles.titleOfTariffs}>
               {t('tariffs_title.title_wifi')}
@@ -58,7 +58,7 @@ export default function TableTariffs() {
             speed={speed}
             about_wifi={about_wifi}
           />
-        </>
+        </React.Fragment>
       ))}
 
       <p onClick={onClicknotIncluded} className={styles.notIncluded}>
