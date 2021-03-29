@@ -28,9 +28,12 @@ export default function HeaderDesctop() {
       </NavLink>
       <div className={style.menu}>
         <NavLink to={'/home'} exact>
-          Главная
+         {t('nav.main')}
         </NavLink>
-        <a href="https://my.fullinet.com/cgi-bin/stat.pl">Кабинет</a>
+        <NavLink to={'/services'} exact>
+        {t('nav.services')}
+        </NavLink>
+        <a href="https://my.fullinet.com/cgi-bin/stat.pl">{t('nav.office')}</a>
         <button
           className={styleButton.buttonChangeLang}
           id={locales}

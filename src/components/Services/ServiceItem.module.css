@@ -1,0 +1,132 @@
+.main {
+  padding: 70px 20px 213px;
+  text-align: center;
+}
+.container_dropMenu {
+  padding: 80px 0px 0px;
+}
+.container_dropMenu_2 {
+  padding: 0px 0px 100px;
+}
+.container_ul {
+  text-align: left;
+  line-height: 24px;
+  padding: 5px 0px 5px 40px;
+}
+.container_ul li {
+  padding: 10px;
+  list-style: square;
+}
+.card__container {
+  display: flex;
+  flex-wrap: wrap;
+  min-height: 265px;
+  background-color: rgba(241, 241, 241, 0.4);
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
+  margin-bottom: 20px;
+  border-radius: 3px;
+  padding: 15px 15px;
+  transition: all 250ms;
+}
+.card__container_fliped {
+  composes: card__container;
+  line-height: 24px;
+  text-align: start;
+  background-color: rgba(241, 241, 241, 0.7);
+  flex-direction: column;
+}
+.buttonContainer {
+  margin: 0 auto;
+  margin-bottom: 15px;
+}
+.secondary_container {
+  width: 100%;
+}
+.card__title {
+  width: 100%;
+  flex-wrap: wrap;
+  display: flex;
+  word-break: break-word;
+}
+.text_center {
+  text-align: center;
+}
+.title {
+  font-weight: 700;
+  font-size: 20px;
+  margin: 0px 0px 10px;
+}
+.descriptions {
+  margin-bottom: 13px;
+}
+.price {
+  margin-bottom: 13px;
+}
+.icons {
+  max-width: 76px;
+  max-height: 75px;
+}
+.container__buttons {
+  margin-top: 50px;
+  display: flex;
+  justify-content: space-around;
+}
+.ip_description_title {
+  margin: 0 auto;
+  margin-bottom: 15px;
+}
+.card__container p {
+  margin: 0 auto;
+  margin-bottom: 10px;
+}
+.card__container_ul {
+  text-align: left;
+  line-height: 24px;
+  margin-bottom: 20px;
+}
+.card__container_ul li::before {
+  content: ' \25A0';
+  padding: 10px;
+  list-style: square;
+}
+@media (min-width: 570px) {
+  .card__container {
+    max-width: 500px;
+    margin: 0 auto;
+    margin-bottom: 30px;
+  }
+}
+@media (min-width: 768px) {
+  .card__container {
+    max-width: 480px;
+    min-height: 304px;
+  }
+  .main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 106px 50px;
+  }
+  .card__container {
+    max-width: 500px;
+  }
+}
+@media (min-width: 1024px) {
+  .card__container {
+    margin-right: 10px;
+  }
+  .main {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 1630px) {
+  .main {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 35px 50px;
+  }
+  .container_dropMenu_2 {
+    padding: 0px;
+  }
+}

@@ -1,9 +1,24 @@
+.imgVisa {
+  visibility: hidden;
+  width: 78px;
+  height: 78px;
+  position: absolute;
+  right: 420px;
+}
+.imgMasterCard {
+  visibility: hidden;
+  width: 90px;
+  height: 53px;
+  position: absolute;
+  right: 300px;
+}
 .contanier {
   position: absolute;
   bottom: 0px;
-  height: 50px;
+  height: 80px;
   width: 100%;
   background-color: var(--headerColor);
+
   font-size: 14px;
   color: #d4d4d4;
   display: flex;
@@ -11,7 +26,10 @@
   align-items: center;
   flex-direction: column;
   font-size: 11px;
+
+  text-align: center;
 }
+
 .linkVitalik {
   text-decoration: underline;
   transition: all 200ms;
@@ -41,3 +59,27 @@
   }
 }
 
+@media (min-width: 768px) {
+  .imgVisa {
+    visibility: visible;
+    width: 78px;
+    height: 78px;
+    position: absolute;
+    right: 140px;
+  }
+  .imgMasterCard {
+    visibility: visible;
+    width: 90px;
+    height: 53px;
+    position: absolute;
+    right: 40px;
+  }
+}
+@media (min-width: 1024px) {
+  .imgVisa {
+    right: 200px;
+  }
+  .imgMasterCard {
+    right: 96px;
+  }
+}

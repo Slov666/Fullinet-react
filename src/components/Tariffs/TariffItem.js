@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Tariffs.module.css';
-import useMobile from '../../hooks/useToggle';
+import useToggle from '../../hooks/useToggle';
 import { useDispatch } from 'react-redux';
 import { setModalConnect } from '../../redux/modal/modalAction';
 
@@ -13,7 +13,7 @@ import '../../utils/i18next';
 
 export default function TariffItem({ cost, speed, name, about_wifi }) {
   const { t } = useTranslation();
-  const [isFlip, onFlip] = useMobile();
+  const [isFlip, onFlip] = useToggle();
   const dispatch = useDispatch();
   return (
     <ReactCardFlip isFlipped={isFlip} flipDirection="horizontal">
@@ -35,11 +35,11 @@ export default function TariffItem({ cost, speed, name, about_wifi }) {
             <p className={styles.card__speed__title}>{t(speed)}</p>
           </div>
           <div className={styles.container__buttons}>
-            <MyButton styles="details" onClick={onFlip}>
+            <MyButton styles="tariffs" onClick={onFlip}>
               {t('ui.details')}
             </MyButton>
             <MyButton
-              styles="details"
+              styles="tariffs"
               onClick={() => dispatch(setModalConnect({ cost, speed, name }))}
               variant="contained"
             >
@@ -53,7 +53,7 @@ export default function TariffItem({ cost, speed, name, about_wifi }) {
         {about_wifi ? (
           <>
             <div className={styles.buttonContainer}>
-              <MyButton styles="details" onClick={onFlip}>
+              <MyButton styles="tariffs" onClick={onFlip}>
                 {t('ui.back')}
               </MyButton>
             </div>
@@ -77,7 +77,7 @@ export default function TariffItem({ cost, speed, name, about_wifi }) {
         ) : (
           <>
             <div className={styles.buttonContainer}>
-              <MyButton styles="details" onClick={onFlip}>
+              <MyButton styles="tariffs" onClick={onFlip}>
                 {t('ui.back')}
               </MyButton>
             </div>

@@ -22,7 +22,7 @@ export default function Main() {
 
   return (
     <main className={style.container}>
-      <section className={style.primaryContainer}>
+      <article className={style.primaryContainer}>
         <div className={style.contact_info}>
           <p onClick={onClickSchedule} className={style.contact_info_schedule}>
             <span>{t('contact_info.work_schedule')}</span>
@@ -71,7 +71,7 @@ export default function Main() {
             </>
           </CSSTransition>
         </div>
-      </section>
+      </article>
     </main>
   );
 }

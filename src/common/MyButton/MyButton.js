@@ -2,25 +2,29 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
-const useStylesFlip = makeStyles(() => ({
+const useStylesTariffs = makeStyles(() => ({
   root: {
     padding: '0',
     fontSize: '10px',
   },
 }));
-// const useStyles = makeStyles(() => ({
-//   root: {
-//     padding: '0',
-//     fontSize: '14px',
-//   },
-// }));
+const useStylesServices = makeStyles(() => ({
+  root: {
+    fontSize: '12px',
+  },
+}));
 
-export default function MyButton({ onClick, styles, children, ...other }) {
-  const styledComponentFlip = useStylesFlip();
+
+export default function MyButton({ onClick, styles, children, ...rest }) {
+  const styledComponentTarrifs= useStylesTariffs();
+  const styledComponentServices = useStylesServices();
   let style;
   switch (styles) {
-    case 'details':
-      style = styledComponentFlip;
+    case 'tariffs':
+      style = styledComponentTarrifs;
+      break;
+    case 'services':
+      style = styledComponentServices;
       break;
 
     default:
@@ -32,7 +36,7 @@ export default function MyButton({ onClick, styles, children, ...other }) {
       color="primary"
       className={style.root}
       onClick={onClick}
-      {...other}
+      {...rest}
     >
       {children}
     </Button>

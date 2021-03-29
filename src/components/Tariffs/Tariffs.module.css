@@ -19,6 +19,7 @@
 }
 .card__container_flipped {
   composes: card__container;
+  background-color: rgba(241, 241, 241, 0.7);
   display: block;
   text-align: center;
   padding: 10px 0px 20px 30px;
@@ -92,6 +93,31 @@
   justify-content: space-between;
   height: 50px;
 }
+.about {
+  margin-bottom: 12px;
+  background-color: rgba(241, 241, 241, 0.4);
+  box-shadow: 0 3px 8px 0 rgb(0 0 0 / 20%);
+  text-align: center;
+  padding: 0px 0px 0px 25px;
+  font-weight: 400;
+  color: #555252;
+  border-radius: 4px;
+  text-transform: uppercase;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: all 250ms;
+  margin: 0px 162px 12px 162px;
+  font-weight: 400;
+  color: #555252;
+  text-transform: uppercase;
+}
+.about span {
+  font-weight: 500;
+  color: #555252;
+  text-transform: uppercase;
+}
 .notIncluded {
   margin-bottom: 12px;
   background-color: rgba(243, 124, 124, 0.4);
@@ -114,13 +140,16 @@
 }
 .notIncluded span {
   margin: 0 auto;
+  font-weight: 500;
 }
 .notIncluded_ul {
   text-align: left;
   line-height: 24px;
-  background-color: rgba(241, 241, 241, 0.4);
+  background-color: rgba(241, 241, 241, 0.7);
   box-shadow: 0 3px 8px 0 rgb(0 0 0 / 20%);
   max-width: 600px;
+  margin: 0 auto;
+  margin-bottom: 12px;
 }
 .notIncluded_ul li::before {
   content: ' \25A0';
@@ -131,11 +160,17 @@
   padding: 10px;
 }
 @media (min-width: 767px) {
-  .container {
-    padding: 18px 0px 188px;
+  .container_dropMenu{
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  .container_tarrifs {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+  }
+  .container {
+    padding: 18px 0px 188px;
   }
   .card__container {
     width: 235px;
@@ -153,9 +188,9 @@
     justify-content: center;
     align-items: center;
   }
-  .notIncluded {
+  /* .notIncluded {
     margin: 0px 162px 12px 162px;
-  }
+  } */
 }
 @media (min-width: 800px) {
   .card__container {
@@ -183,7 +218,7 @@
     min-height: 180px;
   }
   .notIncluded {
-    margin: 0px 262px 12px 262px;
+    /* margin: 0px 340px 12px 262px; */
   }
 }
 @media (min-width: 1296px) {
@@ -192,9 +227,6 @@
   }
 }
 @media (min-width: 1640px) {
-  .notIncluded {
-    margin: 0px 444px 12px ;
-  }
   .titleOfTariffs {
     margin: 0px 444px 25px;
     width: 766px;

@@ -19,33 +19,6 @@ import '../../utils/i18next';
 
 import style from './Header.module.css';
 
-const listItems = [
-  {
-    link: (
-      <NavLink to={'/home'} exact>
-        Главная
-      </NavLink>
-    ),
-    icon: <HomeIcon />,
-  },
-  {
-    link: (
-      <NavLink to={'/license'} exact>
-        Лицензия
-      </NavLink>
-    ),
-    icon: <GavelIcon />,
-  },
-];
-const useStyles = makeStyles({
-  list: {
-    width: 250,
-  },
-  fullList: {
-    width: 'auto',
-  },
-});
-
 export default function Header() {
   const [locales, setLocales] = useState(null);
 
@@ -53,12 +26,36 @@ export default function Header() {
   const changleLanguage = (lang) => {
     i18n.changeLanguage(lang);
   };
-
+  const listItems = [
+    {
+      link: (
+        <NavLink to={'/home'} exact>
+          {t('nav.main')}
+        </NavLink>
+      ),
+      icon: <HomeIcon />,
+    },
+    {
+      link: (
+        <NavLink to={'/services'} exact>
+          {t('nav.services')}
+        </NavLink>
+      ),
+      icon: <GavelIcon />,
+    },
+  ];
+  const useStyles = makeStyles({
+    list: {
+      width: 250,
+    },
+    fullList: {
+      width: 'auto',
+    },
+  });
   const classes = useStyles();
 
   const onClickLang = useCallback((e) => {
     changleLanguage(e.target.id === 'ua' ? 'ru' : 'ua');
-    console.log(e.target);
   });
 
   useEffect(() => {
@@ -109,17 +106,19 @@ export default function Header() {
       <Divider />
       <List>
         {/* в массив ниже могу добавить NavLink */}
-        {[<a href="https://my.fullinet.com/cgi-bin/stat.pl">Кабинет</a>].map(
-          (text, index) => (
-            <ListItem button key={index}>
-              <ListItemIcon>
-                {/* {index % 2 === 0 ? <ContactPhoneIcon /> : <MailIcon />} */}
-                <MailIcon />
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          )
-        )}
+        {[
+          <a href="https://my.fullinet.com/cgi-bin/stat.pl">
+            {t('nav.office')}
+          </a>,
+        ].map((text, index) => (
+          <ListItem button key={index}>
+            <ListItemIcon>
+              {/* {index % 2 === 0 ? <ContactPhoneIcon /> : <MailIcon />} */}
+              <MailIcon />
+            </ListItemIcon>
+            <ListItemText primary={text} />
+          </ListItem>
+        ))}
       </List>
     </div>
   );
@@ -147,9 +146,7 @@ export default function Header() {
         </Drawer>
       </nav>
       <button
-        className={
-          (style.buttonChangeLang)
-        }
+        className={style.buttonChangeLang}
         id={locales}
         onClick={(e) => onClickLang(e)}
       >
