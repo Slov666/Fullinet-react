@@ -1,5 +1,6 @@
 import React from 'react';
 import { setModalConnect } from '../../redux/modal/modalAction';
+import { addToCart } from '../../redux/shop/shopActions';
 import useToggle from '../../hooks/useToggle';
 import { useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
@@ -21,6 +22,7 @@ export default function ServiceItem({
   detailsPrice,
   icon,
   descObj,
+  onMonth
 }) {
   const { t } = useTranslation();
   const [isFlip, onFlip] = useToggle();
@@ -39,6 +41,7 @@ export default function ServiceItem({
     opricalCableInsurance,
     ConfiguringANetworkCard: ConfNetCard,
   } = descObj;
+
   return (
     <ReactCardFlip isFlipped={isFlip} flipDirection="horizontal">
       <div className={styles.card__container}>
@@ -63,7 +66,19 @@ export default function ServiceItem({
 
             <MyButton
               styles="services"
-              onClick={() => dispatch(setModalConnect({}))}
+              onClick={() =>
+                dispatch(
+                  addToCart({
+                    _id,
+                    title,
+                    descriptions,
+                    price,
+                    detailsPrice,
+                    icon,
+                    onMonth
+                  })
+                )
+              }
               variant="contained"
             >
               {t('ui.order')}

@@ -1,3 +1,10 @@
+.button {
+  width: 100%;
+  padding: 10px 10px 10px 0px;
+  background: transparent;
+  font-size: 16px;
+  text-align: start;
+}
 @media (max-width: 767px) {
   .header {
     display: flex;
@@ -22,8 +29,8 @@
 .buttonChangeLang:focus {
   background-color: rgba(0, 0, 0, 0.2);
 }
-@media(min-width: 767px){
-  .buttonChangeLang{
+@media (min-width: 767px) {
+  .buttonChangeLang {
     background: transparent;
     font-size: 16px;
     padding: 5% 15px;
@@ -32,6 +39,5 @@
     margin: 0;
     font-weight: 500;
     text-shadow: 0px 0px #000000;
-
   }
 }

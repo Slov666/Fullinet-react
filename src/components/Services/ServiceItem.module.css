@@ -23,10 +23,10 @@
   min-height: 265px;
   background-color: rgba(241, 241, 241, 0.4);
   box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
-  margin-bottom: 20px;
   border-radius: 3px;
   padding: 15px 15px;
   transition: all 250ms;
+  margin-bottom: 20px;
 }
 .card__container_fliped {
   composes: card__container;
@@ -47,6 +47,7 @@
   flex-wrap: wrap;
   display: flex;
   word-break: break-word;
+  margin-bottom: 20px;
 }
 .text_center {
   text-align: center;

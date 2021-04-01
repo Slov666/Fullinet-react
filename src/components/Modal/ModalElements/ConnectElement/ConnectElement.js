@@ -1,12 +1,12 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import styles from './ConnectElemet.module.css';
-import { modalConnectSelector } from '../../../redux/modal/modalSelectors';
+import { modalConnectSelector } from '../../../../redux/modal/modalSelectors';
 import { useTranslation } from 'react-i18next';
-import '../../../utils/i18next';
+import '../../../../utils/i18next';
 
 import Button from '@material-ui/core/Button';
-import MyInput from '../../../common/MyInput/MyInput';
+import MyInput from '../../../../common/MyInput/MyInput';
 import SendIcon from '@material-ui/icons/Send';
 
 export default function ConnectElement() {

@@ -43,6 +43,7 @@ export default function Services() {
             detailsPrice,
             icon,
             descObj,
+            onMonth
           }) => (
             <ServiceItem
               key={`card-${_id}`}
@@ -53,6 +54,7 @@ export default function Services() {
               detailsPrice={detailsPrice}
               icon={icon}
               descObj={descObj}
+              onMonth={onMonth}
             />
           )
         )}

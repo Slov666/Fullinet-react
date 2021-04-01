@@ -1,8 +1,10 @@
 import React from 'react';
 import style from './Image.module.css';
 import Loader from '../../components/Loader/Loader';
+import classNames from 'classnames';
+import PropTypes from 'prop-types';
 
-export default function Image({ alt, ...rest }) {
+export default function Image({ alt, size, ...rest }) {
   const [isLoading, setLoading] = React.useState(true);
   const [isError, setIsError] = React.useState(false);
 
@@ -17,7 +19,7 @@ export default function Image({ alt, ...rest }) {
   };
 
   return (
-    <div className={style.container}>
+    <div className={classNames(style.container, style[size])}>
       {isError && !isLoading && (
         <img
           src="images/DefaultServices-min.png"
@@ -25,7 +27,7 @@ export default function Image({ alt, ...rest }) {
           className={style.img}
         />
       )}
-      {!isError && isLoading && <Loader width={100} position="card"/>}
+      {!isError && isLoading && <Loader width={100} position="card" />}
       <img
         style={{
           display: isError || isLoading ? 'none' : 'initial',
@@ -38,3 +40,10 @@ export default function Image({ alt, ...rest }) {
     </div>
   );
 }
+Image.proprTypes = {
+  size: PropTypes.string,
+};
+
+Image.defaultProps = {
+  size: "big_size",
+};

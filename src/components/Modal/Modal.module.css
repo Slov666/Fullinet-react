@@ -22,7 +22,7 @@
 .right,
 .left,
 .center,
-.centerSmall {
+.centerShop {
   composes: modalBase;
 }
 .center {
@@ -30,7 +30,7 @@
   height: 97vh;
   justify-content: center;
   align-items: center;
-  top: 53%;;
+  top: 53%;
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: var(--whiteColor);
@@ -49,17 +49,27 @@
   background-size: contain;
   background-color: transparent;
 }
+.modalBackdrop {
+  background-color: rgba(0, 0, 0, 0.25);
+}
 
-@media (min-width: 768px) {
-  .modalBackdrop {
-    background-color: rgba(0, 0, 0, 0.25);
+.centerShop {
+  width: 100%;
+}
+@media (max-width: 767px) {
+  .modalBase {
+    background-color: var(--whiteColor);
+    padding: 0px;
+    height: 100%;
+    top: 38px;
   }
+}
+@media (min-width: 768px) {
   .modalBase {
     background-color: var(--whiteColor);
     height: 100%;
     top: 0;
     width: 512px;
-    /* padding: 120px 50px 30px 30px; */
   }
 
   .closeBtn {
@@ -75,7 +85,7 @@
 
   .center {
     width: 688px;
-    height: 340px;
+    height: 372px;
     justify-content: center;
     align-items: center;
     top: 50%;
@@ -83,22 +93,19 @@
     transform: translate(-50%, -50%);
   }
 
-  .centerSmall {
-    width: 400px;
-    height: 230px;
-    padding: 30px;
+  .centerShop {
+    width: 742px;
+    height: 679px;
+    justify-content: center;
+    align-items: center;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    padding: 0px 0px 0px;
   }
 }
 
 @media (min-width: 1280px) {
-  .modalBase {
-    width: 530px;
-    display: flex;
-  }
-
   .center {
     width: 800px;
     min-height: 400px;

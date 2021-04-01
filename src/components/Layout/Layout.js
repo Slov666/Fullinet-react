@@ -9,6 +9,7 @@ import { isAnyModalOpenSelector } from '../../redux/modal/modalSelectors';
 import Header from '../Header/Header';
 import HeaderDesctop from '../Header/HeaderDesctop';
 import ModalConnect from '../../components/Modal/ModalComponents/ModalConnect';
+import ModalShop from '../../components/Modal/ModalComponents/ModalShop'
 import Footer from '../Footer/Footer';
 
 export default function Layout({ children }) {
@@ -35,6 +36,7 @@ export default function Layout({ children }) {
       >
         {children}
         <ModalConnect />
+        <ModalShop />
         <Footer />
       </div>
     </>

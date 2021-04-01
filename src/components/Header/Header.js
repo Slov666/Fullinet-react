@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
+import { useDispatch } from 'react-redux';
+import { setModalShop } from '../../redux/modal/modalAction';
 import clsx from 'clsx';
 import { NavLink } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
@@ -14,12 +16,16 @@ import MailIcon from '@material-ui/icons/Mail';
 import GavelIcon from '@material-ui/icons/Gavel';
 import MenuIcon from '@material-ui/icons/Menu';
 import Typography from '@material-ui/core/Typography';
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import IconButton from '@material-ui/core/IconButton';
+
 import { useTranslation } from 'react-i18next';
 import '../../utils/i18next';
 
 import style from './Header.module.css';
 
 export default function Header() {
+  const dispatch = useDispatch();
   const [locales, setLocales] = useState(null);
 
   const { t, i18n } = useTranslation();
@@ -42,6 +48,17 @@ export default function Header() {
         </NavLink>
       ),
       icon: <GavelIcon />,
+    },
+    {
+      link: (
+        <button
+          className={style.button}
+          onClick={() => dispatch(setModalShop(true))}
+        >
+          Корзина
+        </button>
+      ),
+      icon: <ShoppingCartIcon onClick={() => dispatch(setModalShop(true))} />,
     },
   ];
   const useStyles = makeStyles({
