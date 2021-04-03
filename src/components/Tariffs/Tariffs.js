@@ -17,52 +17,56 @@ export default function TableTariffs() {
 
   const [notIncluded, onClicknotIncluded] = useToggle();
   const [aboutMore, onClickAboutMore] = useToggle();
+
+
   return (
     <main className={styles.container}>
-    <section className={styles.container_tarrifs}>
-      {tariffs.map(({ name, cost, speed, about_wifi, id }, index) => (
-        <React.Fragment key={id}>
-          {index === 0 && (
-            <p className={styles.titleOfTariffs}>
-              {t('tariffs_title.title_wifi')}
-            </p>
-          )}
-          {index === 3 && (
-            <p className={styles.titleOfTariffs}>
-              {t('tariffs_title.title_Vita')}
-            </p>
-          )}
-          {index === 6 && (
-            <p className={styles.titleOfTariffs}>
-              {t('tariffs_title.title_Pirogiv')}
-            </p>
-          )}
-          {index === 9 && (
-            <p className={styles.titleOfTariffs}>
-              {t('tariffs_title.title_Damba')}
-            </p>
-          )}
-          {index === 12 && (
-            <p className={styles.titleOfTariffs}>
-              {t('tariffs_title.title_Novi_Bezradichi')}
-            </p>
-          )}
-          {index === 15 && (
-            <p className={styles.titleOfTariffs}>
-              {t('tariffs_title.title_Green_wood')}
-            </p>
-          )}
+      <section className={styles.container_tarrifs}>
+      
+       
+        {tariffs.map(({ name, cost, speed, about_wifi, id }, index) => (
+          <React.Fragment key={id}>
+            {index === 0 && (
+              <p className={styles.titleOfTariffs}>
+                {t('tariffs_title.title_wifi')}
+              </p>
+            )}
+            {index === 3 && (
+              <p className={styles.titleOfTariffs}>
+                {t('tariffs_title.title_Vita')}
+              </p>
+            )}
+            {index === 6 && (
+              <p className={styles.titleOfTariffs}>
+                {t('tariffs_title.title_Pirogiv')}
+              </p>
+            )}
+            {index === 9 && (
+              <p className={styles.titleOfTariffs}>
+                {t('tariffs_title.title_Damba')}
+              </p>
+            )}
+            {index === 12 && (
+              <p className={styles.titleOfTariffs}>
+                {t('tariffs_title.title_Novi_Bezradichi')}
+              </p>
+            )}
+            {index === 15 && (
+              <p className={styles.titleOfTariffs}>
+                {t('tariffs_title.title_Green_wood')}
+              </p>
+            )}
 
-          <TariffItem
-            //this flipped list
-            key={`card-${index}`}
-            name={name}
-            cost={cost}
-            speed={speed}
-            about_wifi={about_wifi}
-          />
-        </React.Fragment>
-      ))}
+            <TariffItem
+              //this flipped list
+              key={`card-${index}`}
+              name={name}
+              cost={cost}
+              speed={speed}
+              about_wifi={about_wifi}
+            />
+          </React.Fragment>
+        ))}
       </section>
       <div>
         <DropMenu

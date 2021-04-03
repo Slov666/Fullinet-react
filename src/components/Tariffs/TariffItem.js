@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import styles from './Tariffs.module.css';
+
+import useMobile from '../../hooks/useMobile';
 import useToggle from '../../hooks/useToggle';
 import { useDispatch } from 'react-redux';
+
 import { setModalConnect } from '../../redux/modal/modalAction';
 
 import { Scrollbars } from 'rc-scrollbars';
@@ -11,10 +14,22 @@ import MyButton from '../../common/MyButton/MyButton';
 import { useTranslation } from 'react-i18next';
 import '../../utils/i18next';
 
-export default function TariffItem({ cost, speed, name, about_wifi }) {
+export default function TariffItem({
+  cost,
+  speed,
+  name,
+  about_wifi,
+}) {
   const { t } = useTranslation();
   const [isFlip, onFlip] = useToggle();
+
   const dispatch = useDispatch();
+  const isMobile = useMobile();
+  const styleWhenNotFliped = useRef({
+    padding: '0px 0px 50px 0px',
+  });
+  console.log(!isFlip ? styleWhenNotFliped.current : {});
+
   return (
     <ReactCardFlip isFlipped={isFlip} flipDirection="horizontal">
       <div className={styles.card__container}>
@@ -81,8 +96,11 @@ export default function TariffItem({ cost, speed, name, about_wifi }) {
                 {t('ui.back')}
               </MyButton>
             </div>
-            <Scrollbars autoHeight={true} autoHeightMin={350} autoHide={true}>
-              <ul className={styles.card__container_ul}>
+            {isMobile ? (
+              <ul
+                className={styles.card__container_ul}
+                style={!isFlip ? styleWhenNotFliped.current : {}}
+              >
                 <li>{t('tariffs_title.optical_internet.l1')}</li>
                 <li>{t('tariffs_title.optical_internet.l2')}</li>
                 <li>{t('tariffs_title.optical_internet.l3')}</li>
@@ -90,7 +108,18 @@ export default function TariffItem({ cost, speed, name, about_wifi }) {
                 <li>{t('tariffs_title.optical_internet.l5')}</li>
                 <li>{t('tariffs_title.optical_internet.l6')}</li>
               </ul>
-            </Scrollbars>
+            ) : (
+              <Scrollbars autoHeight={true} autoHeightMin={350} autoHide={true}>
+                <ul className={styles.card__container_ul}>
+                  <li>{t('tariffs_title.optical_internet.l1')}</li>
+                  <li>{t('tariffs_title.optical_internet.l2')}</li>
+                  <li>{t('tariffs_title.optical_internet.l3')}</li>
+                  <li>{t('tariffs_title.optical_internet.l4')}</li>
+                  <li>{t('tariffs_title.optical_internet.l5')}</li>
+                  <li>{t('tariffs_title.optical_internet.l6')}</li>
+                </ul>
+              </Scrollbars>
+            )}
           </>
         )}
       </div>

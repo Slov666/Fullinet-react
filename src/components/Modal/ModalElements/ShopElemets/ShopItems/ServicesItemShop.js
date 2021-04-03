@@ -26,7 +26,7 @@ export default function ServicesItemShop({ itemDate }) {
     let total = cost * itemDate.qty;
     setTotalCost(total);
   }, [cost, itemDate.qty, totalCost]);
-
+  
   return isMobile ? (
     <li className={styles.container}>
       <div className={styles.container_desc}>
@@ -39,7 +39,7 @@ export default function ServicesItemShop({ itemDate }) {
 
       <div className={styles.container_btnAndIcon}>
         <div className={styles.icon}>
-          <Image src={t(itemDate.icon)} alt="services" size="shop_size" />
+          <Image src={t(itemDate.icon)} alt={itemDate.alt} size="shop_size" />
         </div>
 
         <div className={styles.container_bth}>
@@ -64,7 +64,7 @@ export default function ServicesItemShop({ itemDate }) {
   ) : (
     <li className={styles.container}>
       <div className={styles.icon}>
-        <Image src={t(itemDate.icon)} alt="services" size="shop_size" />
+        <Image src={t(itemDate.icon)} alt={itemDate.alt} size="shop_size" />
       </div>
 
       <div className={styles.container_desc}>

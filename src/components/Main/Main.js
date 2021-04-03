@@ -14,15 +14,61 @@ import IconButton from '@material-ui/core/IconButton';
 
 import style from './Main.module.css';
 
+// test
+import css from '../../components/Tariffs/Tariffs.module.css';
+
 export default function Main() {
   const [isOpenSchedule, onClickSchedule] = useToggle();
   const [isOpenContacts, onClickContacts] = useToggle();
   const dispatch = useDispatch();
   const { t } = useTranslation();
 
+  //test
+  const [notIncluded, onClicknotIncluded] = useToggle();
+
   return (
     <main className={style.container}>
       <article className={style.primaryContainer}>
+        <>
+          <div className={css.container_dropMenu}>
+            <p onClick={onClicknotIncluded} className={css.notIncluded}>
+              <span>
+                {' '}
+                На даном етапі сайт знаходиться в розробці. Натисніть щоб
+                дізнатись детальніше
+              </span>
+              <IconButton onClick={() => onClicknotIncluded}>
+                <MenuIcon />
+              </IconButton>
+            </p>
+            <CSSTransition
+              in={notIncluded}
+              timeout={300}
+              classNames={animate}
+              unmountOnExit
+            >
+              <>
+
+      
+
+                {notIncluded && (
+                  <ul className={css.notIncluded_ul}>
+                    <li>
+                      Ви можете дивитись інформацію про тарифи на персональному
+                      комп'ютері. Телефон поки що не підтримується
+                    </li>
+                    <li>
+                      Ви можите замовити тариф чи послугу по телефону.
+                      Детальніше в контактах{' '}
+                    </li>
+                    <li>Деякі картинки можуть не загрузитись</li>
+                  </ul>
+                )}
+              </>
+            </CSSTransition>
+          </div>
+        </>
+
         <div className={style.contact_info}>
           <p onClick={onClickSchedule} className={style.contact_info_schedule}>
             <span>{t('contact_info.work_schedule')}</span>
