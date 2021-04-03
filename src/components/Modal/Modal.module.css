@@ -18,6 +18,17 @@
     drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
   overflow-y: auto;
 }
+/* .modalBase {
+  position: absolute;
+  width: 100%;
+  height: calc(100% - 60px);
+  top: 60px;
+  padding: 60px 20px;
+  background-color: var(--formColor);
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25)),
+    drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  overflow-y: auto;
+} */
 
 .right,
 .left,
@@ -30,7 +41,6 @@
   height: 97vh;
   justify-content: center;
   align-items: center;
-  top: 53%;
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: var(--whiteColor);
@@ -38,7 +48,7 @@
 .closeBtn {
   height: 18px;
   width: 18px;
-
+  z-index: 1000;
   position: absolute;
   top: 10px;
   right: 5px;
@@ -57,13 +67,21 @@
   width: 100%;
 }
 @media (max-width: 767px) {
+  .centerShop{
+    top: 38px;
+  }
+
   .modalBase {
     background-color: var(--whiteColor);
     padding: 0px;
     height: 100%;
-    top: 38px;
+  }
+  .center{
+    top: calc(50% - -38px);
+    padding: 40px;
   }
 }
+
 @media (min-width: 768px) {
   .modalBase {
     background-color: var(--whiteColor);
@@ -74,6 +92,7 @@
 
   .closeBtn {
     right: 10px;
+    z-index: 100000;
   }
 
   .right {

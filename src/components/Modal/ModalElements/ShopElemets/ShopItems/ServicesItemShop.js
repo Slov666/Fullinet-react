@@ -1,6 +1,7 @@
-import React, { useEffect } from 'react';
-import styles from './ServicesShop.module.css';
+import React, { useEffect, useState } from 'react';
+import styles from './ServicesItemShop.module.css';
 import Image from '../../../../../common/Image/Image';
+import RemoveSVG from '../../../../../common/IconSvg/RemoveSVG';
 
 import '../../../../../utils/i18next';
 import { useTranslation } from 'react-i18next';
@@ -18,9 +19,13 @@ export default function ServicesItemShop({ itemDate }) {
   const dispatch = useDispatch();
   const isMobile = useMobile();
 
-  // useEffect(() => {
-  //   if (itemDate.qty === 0) dispatch(removeFromCart(itemDate._id));
-  // }, [dispatch, itemDate._id, itemDate.qty]);
+  const [totalCost, setTotalCost] = useState(0);
+  const cost = Number(itemDate.price);
+
+  useEffect(() => {
+    let total = cost * itemDate.qty;
+    setTotalCost(total);
+  }, [cost, itemDate.qty, totalCost]);
 
   return isMobile ? (
     <li className={styles.container}>
@@ -28,7 +33,7 @@ export default function ServicesItemShop({ itemDate }) {
         <h3>{t(itemDate.title)}</h3>
         <p>{t(itemDate.descriptions)}</p>
         <p className={styles.price}>
-          {t(itemDate.price)} <span>{t(itemDate.detailsPrice)}</span>
+          {totalCost} <span>{t(itemDate.detailsPrice)}</span>
         </p>
       </div>
 
@@ -38,12 +43,21 @@ export default function ServicesItemShop({ itemDate }) {
         </div>
 
         <div className={styles.container_bth}>
-          <button onClick={() => dispatch(increment(itemDate._id))}>+</button>
-          <p className={styles.qty}>{`${itemDate.qty}`}</p>
-          <button onClick={() => dispatch(decrement(itemDate._id))}>-</button>
-          <button onClick={() => dispatch(removeFromCart(itemDate._id))}>
-            Видалити
+          <button
+            className={styles.plus}
+            onClick={() => dispatch(increment(itemDate._id))}
+          >
+            +
           </button>
+          <p className={styles.qty}>{`${itemDate.qty}`}</p>
+          <button
+            className={styles.minus}
+            onClick={() => dispatch(decrement(itemDate._id))}
+          >
+            -
+          </button>
+
+          <RemoveSVG onClick={() => dispatch(removeFromCart(itemDate._id))} />
         </div>
       </div>
     </li>
@@ -57,16 +71,24 @@ export default function ServicesItemShop({ itemDate }) {
         <h3>{t(itemDate.title)}</h3>
         <p>{t(itemDate.descriptions)}</p>
         <p className={styles.price}>
-          {t(itemDate.price)} <span>{t(itemDate.detailsPrice)}</span>
+          {totalCost} <span>{t(itemDate.detailsPrice)}</span>
         </p>
       </div>
       <div className={styles.container_bth}>
-        <button onClick={() => dispatch(increment(itemDate._id))}>+</button>
-        <p className={styles.qty}>{`${itemDate.qty}`}</p>
-        <button onClick={() => dispatch(decrement(itemDate._id))}>-</button>
-        <button onClick={() => dispatch(removeFromCart(itemDate._id))}>
-          Видалити
+        <button
+          className={styles.plus}
+          onClick={() => dispatch(increment(itemDate._id))}
+        >
+          +
         </button>
+        <p className={styles.qty}>{`${itemDate.qty}`}</p>
+        <button
+          className={styles.minus}
+          onClick={() => dispatch(decrement(itemDate._id))}
+        >
+          -
+        </button>
+        <RemoveSVG onClick={() => dispatch(removeFromCart(itemDate._id))} />
       </div>
     </li>
   );

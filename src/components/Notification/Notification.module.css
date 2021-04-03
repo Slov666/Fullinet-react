@@ -1,0 +1,32 @@
+.box {
+  max-width: 280px;
+  padding: 20px 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  color: white;
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  z-index: 9000;
+}
+
+.alert {
+  background-color: lightcoral;
+}
+.success {
+  background-color: rgb(105, 185, 25);
+}
+
+@media (min-width: 768px) {
+  .box {
+    max-width: 512px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .box {
+    max-width: 530px;
+  }
+}

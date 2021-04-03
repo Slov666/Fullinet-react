@@ -28,6 +28,10 @@
   transition: all 250ms;
   margin-bottom: 20px;
 }
+.card__container:hover,
+.card__container:focus {
+  background-color: rgba(241, 241, 241, 0.6);
+}
 .card__container_fliped {
   composes: card__container;
   line-height: 24px;

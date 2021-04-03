@@ -5,6 +5,8 @@ import useToggle from '../../hooks/useToggle';
 import { useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 
+import { makeSuccessNotification } from '../../redux/notifications/notificationOperations';
+
 import styles from './ServiceItem.module.css';
 
 import Image from '../../common/Image/Image';
@@ -42,6 +44,21 @@ export default function ServiceItem({
     ConfiguringANetworkCard: ConfNetCard,
   } = descObj;
 
+const handlerAddToCart = () =>{
+  dispatch(
+    addToCart({
+      _id,
+      title,
+      descriptions,
+      price,
+      detailsPrice,
+      icon,
+      onMonth
+    })
+  )
+  dispatch(makeSuccessNotification("Додано в корзину"))
+}
+
   return (
     <ReactCardFlip isFlipped={isFlip} flipDirection="horizontal">
       <div className={styles.card__container}>
@@ -66,19 +83,7 @@ export default function ServiceItem({
 
             <MyButton
               styles="services"
-              onClick={() =>
-                dispatch(
-                  addToCart({
-                    _id,
-                    title,
-                    descriptions,
-                    price,
-                    detailsPrice,
-                    icon,
-                    onMonth
-                  })
-                )
-              }
+              onClick={handlerAddToCart}
               variant="contained"
             >
               {t('ui.order')}

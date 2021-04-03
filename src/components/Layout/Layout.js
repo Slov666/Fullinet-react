@@ -16,9 +16,11 @@ export default function Layout({ children }) {
   const isMobile = useMobile();
   const isAnyModalOpen = useSelector(isAnyModalOpenSelector);
   const scrollY = useRef(window.scrollY);
-  const shouldToChangeLayout = isMobile && isAnyModalOpen;
+  const shouldToChangeLayout =  isAnyModalOpen;
   const styleWhenModalIsOpened = useRef({
     position: 'fixed',
+    right: "0px",
+    left: "0px",
     top: `-${scrollY.current - 59}px`,
   });
   isAnyModalOpen && window.scrollTo(0, parseInt(scrollY || '0') * -1);
@@ -40,5 +42,6 @@ export default function Layout({ children }) {
         <Footer />
       </div>
     </>
+   
   );
 }

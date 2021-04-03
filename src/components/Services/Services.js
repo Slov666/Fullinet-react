@@ -1,8 +1,10 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import styles from './ServiceItem.module.css';
-import '../../utils/i18next';
 import useToggle from '../../hooks/useToggle';
+
+import styles from './ServiceItem.module.css';
+
+import '../../utils/i18next';
 
 import ServiceItem from './ServiceItem';
 import DropMenu from '../../common/DropMenu/DropMenu';
@@ -12,6 +14,7 @@ export default function Services() {
   const { t } = useTranslation();
   const [about, onClickAbout] = useToggle();
   const services = t('services', { returnObjects: true });
+
 
   return (
     <main>
@@ -43,7 +46,7 @@ export default function Services() {
             detailsPrice,
             icon,
             descObj,
-            onMonth
+            onMonth,
           }) => (
             <ServiceItem
               key={`card-${_id}`}

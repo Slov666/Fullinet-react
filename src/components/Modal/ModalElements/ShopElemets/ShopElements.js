@@ -1,14 +1,20 @@
 import React, { useEffect, useState } from 'react';
+import ReactCardFlip from 'react-card-flip';
 import { useSelector } from 'react-redux';
+import useToggle from '../../../../hooks/useToggle';
 
 import ServicesItemShop from './ShopItems/ServicesItemShop';
 import { cartSelector } from '../../../../redux/shop/shopSelectors';
-import  useIsMobile  from '../../../../hooks/useMobile';
+import useIsMobile from '../../../../hooks/useMobile';
 
 import { useTranslation } from 'react-i18next';
 import '../../../../utils/i18next';
 
 import { Scrollbars } from 'rc-scrollbars';
+import MyInput from '../../../../common/MyInput/MyInput';
+import MyButton from '../../../../common/MyButton/MyButton';
+import Button from '@material-ui/core/Button';
+import SendIcon from '@material-ui/icons/Send';
 
 import styles from './ShopElemets.module.css';
 
@@ -19,7 +25,10 @@ export default function ShopElements() {
   const [totalItemsOnePay, setTotalItemsOnePay] = useState(0);
   const [totalItems, setTotalItems] = useState(0);
 
+  const [isFlip, onFlip] = useToggle();
+
   const cart = useSelector(cartSelector);
+  const { t } = useTranslation();
   const isMobile = useIsMobile();
 
   useEffect(() => {
@@ -54,35 +63,81 @@ export default function ShopElements() {
     totalItemsOnePay,
   ]);
   return (
-    <Scrollbars
-      autoHeight={true}
-      autoHeightMin={isMobile ? 810 : 675}
-      autoHide={true}
-    >
-      <section>
-        <h2 className={styles.title}>Ваша корзина </h2>
-        <div className={styles.container}>
-          <div>
-            {cart.length <= 0 && <p>Ваша корзина порожня</p>}
-            {cart.length > 0 &&
-              cart.map((item) => {
-                return <ServicesItemShop key={item._id} itemDate={item} />;
-              })}
-          </div>
+    <ReactCardFlip isFlipped={isFlip} flipDirection="horizontal">
+      <Scrollbars
+        autoHeight={true}
+        autoHeightMin={isMobile ? 773 : 675}
+        autoHide={true}
+      >
+        <section>
+          <h2 className={styles.title}>Ваша корзина</h2>
 
           <div className={styles.price_container}>
             <p className={styles.price}>
-              Ціна в місяць:<span>{totalPriceAtMonth}грн.</span>
+              {t('shop.month_pay_price')}
+              <span>{totalPriceAtMonth}грн.</span>
             </p>
             <p className={styles.price}>
-              Ціна єдиноразовим платежем:<span>{totalPriceOnePay}грн.</span>
+              {t('shop.one_pay_price')}
+              <span>{totalPriceOnePay}грн.</span>
             </p>
             <p className={styles.price}>
-              Загальна кількість послуг: <span>{totalItems}</span>
+              {t('shop.total_services')} <span>{totalItems}</span>
             </p>
+            <div className={styles.container_details_btn}>
+              <MyButton styles="services" onClick={onFlip}>
+                Замовити
+              </MyButton>
+            </div>
           </div>
+
+          <div className={styles.container}>
+            <div>
+              {cart.length <= 0 && (
+                <p className={styles.cart_empty}>{t('shop.cart_empty')}</p>
+              )}
+              {cart.length > 0 &&
+                cart.map((item) => {
+                  return <ServicesItemShop key={item._id} itemDate={item} />;
+                })}
+            </div>
+          </div>
+        </section>
+      </Scrollbars>
+
+      <section className={styles.sectionForm}>
+        <form className={styles.form}>
+          <div className={styles.abonent}>
+            <MyInput label={t('form.yourName')} />
+            <MyInput label={t('form.yourPhone')} />
+            <MyInput label={t('form.yourAddress')} />
+          </div>
+          <div className={styles.containerBtn}>
+            <Button variant="contained" color="primary" endIcon={<SendIcon />}>
+              Відправити
+            </Button>
+          </div>
+        </form>
+
+        <div className={styles.price_container_fliped}>
+          <p className={styles.price}>
+            {t('shop.month_pay_price')}
+            <span>{totalPriceAtMonth}грн.</span>
+          </p>
+          <p className={styles.price}>
+            {t('shop.one_pay_price')}
+            <span>{totalPriceOnePay}грн.</span>
+          </p>
+          <p className={styles.price}>
+            {t('shop.total_services')} <span>{totalItems}</span>
+          </p>
+        </div>
+        <div className={styles.container_buttonForm}>
+          <MyButton styles="services" onClick={onFlip}>
+            {t('ui.back')}
+          </MyButton>
         </div>
       </section>
-    </Scrollbars>
+    </ReactCardFlip>
   );
 }

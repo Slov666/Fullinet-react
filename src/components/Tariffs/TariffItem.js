@@ -59,7 +59,7 @@ export default function TariffItem({ cost, speed, name, about_wifi }) {
             </div>
             <h4>
               {t('tariffs_title.wifi')} <br />
-              3000 - 4000 грн.
+              3000 - 4000 грн
             </h4>
             <ul className={styles.card__container_ul}>
               <li>{t(about_wifi.l1)}</li>
