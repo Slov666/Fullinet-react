@@ -1,9 +1,15 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 import styles from './Tariffs.module.css';
 
 import useMobile from '../../hooks/useMobile';
 import useToggle from '../../hooks/useToggle';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  setFlip,
+  setCurrentIdFlip,
+  removeCurrentIdFlip,
+} from '../../redux/fliped/flipedAction';
+import { idFlipSelector } from '../../redux/fliped/flipedSelector';
 
 import { setModalConnect } from '../../redux/modal/modalAction';
 
@@ -14,21 +20,44 @@ import MyButton from '../../common/MyButton/MyButton';
 import { useTranslation } from 'react-i18next';
 import '../../utils/i18next';
 
-export default function TariffItem({
-  cost,
-  speed,
-  name,
-  about_wifi,
-}) {
+export default function TariffItem({ cost, speed, name, about_wifi, id }) {
   const { t } = useTranslation();
+
   const [isFlip, onFlip] = useToggle();
 
+  const flipId = useSelector(idFlipSelector(id));
+
   const dispatch = useDispatch();
+
   const isMobile = useMobile();
-  const styleWhenNotFliped = useRef({
-    padding: '0px 0px 50px 0px',
+
+  useEffect(() => {
+    if (isFlip) {
+      dispatch(setFlip({ isFlip: isFlip, id: id }));
+    } else {
+      dispatch(setFlip({ isFlip: isFlip, id: id }));
+    }
+  }, [dispatch, isFlip, id]);
+
+  useEffect(() => {
+    dispatch(removeCurrentIdFlip(id));
+    return () => {
+      dispatch(removeCurrentIdFlip(id));
+    };
+  }, [dispatch, id]);
+
+  const handleOnClickNext = () => {
+    onFlip();
+    dispatch(setCurrentIdFlip(id));
+  };
+  const handleOnClickPrev = () => {
+    onFlip();
+    dispatch(removeCurrentIdFlip(id));
+  };
+
+  const styleWhenFliped = useRef({
+    display: 'block',
   });
-  console.log(!isFlip ? styleWhenNotFliped.current : {});
 
   return (
     <ReactCardFlip isFlipped={isFlip} flipDirection="horizontal">
@@ -50,7 +79,7 @@ export default function TariffItem({
             <p className={styles.card__speed__title}>{t(speed)}</p>
           </div>
           <div className={styles.container__buttons}>
-            <MyButton styles="tariffs" onClick={onFlip}>
+            <MyButton styles="tariffs" onClick={handleOnClickNext}>
               {t('ui.details')}
             </MyButton>
             <MyButton
@@ -64,11 +93,16 @@ export default function TariffItem({
         </div>
       </div>
 
-      <div className={styles.card__container_flipped}>
+      <div
+        className={styles.card__container_flipped}
+        style={
+          isMobile && flipId && flipId.id === id ? styleWhenFliped.current : {}
+        }
+      >
         {about_wifi ? (
           <>
             <div className={styles.buttonContainer}>
-              <MyButton styles="tariffs" onClick={onFlip}>
+              <MyButton styles="tariffs" onClick={handleOnClickPrev}>
                 {t('ui.back')}
               </MyButton>
             </div>
@@ -88,26 +122,41 @@ export default function TariffItem({
               <li>{t(about_wifi.l9)}</li>
               <li>{t(about_wifi.l10)}</li>
             </ul>
+            <MyButton
+              styles="services"
+              onClick={() => dispatch(setModalConnect({ cost, speed, name }))}
+              variant="contained"
+            >
+              {t('ui.order')}
+            </MyButton>
           </>
         ) : (
           <>
             <div className={styles.buttonContainer}>
-              <MyButton styles="tariffs" onClick={onFlip}>
+              <MyButton styles="tariffs" onClick={handleOnClickPrev}>
                 {t('ui.back')}
               </MyButton>
             </div>
             {isMobile ? (
-              <ul
-                className={styles.card__container_ul}
-                style={!isFlip ? styleWhenNotFliped.current : {}}
-              >
-                <li>{t('tariffs_title.optical_internet.l1')}</li>
-                <li>{t('tariffs_title.optical_internet.l2')}</li>
-                <li>{t('tariffs_title.optical_internet.l3')}</li>
-                <li>{t('tariffs_title.optical_internet.l4')}</li>
-                <li>{t('tariffs_title.optical_internet.l5')}</li>
-                <li>{t('tariffs_title.optical_internet.l6')}</li>
-              </ul>
+              <>
+                <ul className={styles.card__container_ul}>
+                  <li>{t('tariffs_title.optical_internet.l1')}</li>
+                  <li>{t('tariffs_title.optical_internet.l2')}</li>
+                  <li>{t('tariffs_title.optical_internet.l3')}</li>
+                  <li>{t('tariffs_title.optical_internet.l4')}</li>
+                  <li>{t('tariffs_title.optical_internet.l5')}</li>
+                  <li>{t('tariffs_title.optical_internet.l6')}</li>
+                </ul>
+                <MyButton
+                  styles="services"
+                  onClick={() =>
+                    dispatch(setModalConnect({ cost, speed, name }))
+                  }
+                  variant="contained"
+                >
+                  {t('ui.order')}
+                </MyButton>
+              </>
             ) : (
               <Scrollbars autoHeight={true} autoHeightMin={350} autoHide={true}>
                 <ul className={styles.card__container_ul}>

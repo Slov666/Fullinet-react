@@ -46,8 +46,8 @@
   background-color: var(--whiteColor);
 }
 .closeBtn {
-  height: 18px;
-  width: 18px;
+  height: 34px;
+    width: 34px;
   z-index: 1000;
   position: absolute;
   top: 10px;
@@ -78,7 +78,7 @@
   }
   .center{
     top: calc(50% - -38px);
-    padding: 40px;
+    padding: 50px 15px 0px;
   }
 }
 
@@ -93,6 +93,7 @@
   .closeBtn {
     right: 10px;
     z-index: 100000;
+   
   }
 
   .right {

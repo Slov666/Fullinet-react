@@ -60,6 +60,13 @@
     padding-top: 80px;
   }
 }
+@media (min-width: 897px) {
+  .contact_info_schedule {
+    max-width: 400px;
+    margin: 0 auto;
+    margin-bottom: 12px;
+  }
+}
 @media (min-width: 1000px) {
   .contact_info {
     width: 400px;

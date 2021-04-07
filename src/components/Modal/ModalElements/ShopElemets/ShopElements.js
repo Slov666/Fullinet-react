@@ -114,7 +114,7 @@ export default function ShopElements() {
           </div>
           <div className={styles.containerBtn}>
             <Button variant="contained" color="primary" endIcon={<SendIcon />}>
-              Відправити
+              {t("ui.send")}
             </Button>
           </div>
         </form>

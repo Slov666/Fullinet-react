@@ -17,7 +17,7 @@ import GavelIcon from '@material-ui/icons/Gavel';
 import MenuIcon from '@material-ui/icons/Menu';
 import Typography from '@material-ui/core/Typography';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
-import IconButton from '@material-ui/core/IconButton';
+
 
 import { useTranslation } from 'react-i18next';
 import '../../utils/i18next';
@@ -71,6 +71,7 @@ export default function Header() {
   });
   const classes = useStyles();
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const onClickLang = useCallback((e) => {
     changleLanguage(e.target.id === 'ua' ? 'ru' : 'ua');
   });

@@ -1,16 +1,19 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import styles from './Tariffs.module.css';
 import { CSSTransition } from 'react-transition-group';
 import animate from './animate.module.css';
-import useToggle from '../../hooks/useToggle';
-import { useTranslation } from 'react-i18next';
-import DropMenu from '../../common/DropMenu/DropMenu';
 import '../../utils/i18next';
 
+import { useSelector } from 'react-redux';
+import useMobile from '../../hooks/useMobile';
+import useToggle from '../../hooks/useToggle';
+import { useTranslation } from 'react-i18next';
+
+import DropMenu from '../../common/DropMenu/DropMenu';
 import MenuIcon from '@material-ui/icons/Menu';
 import IconButton from '@material-ui/core/IconButton';
 import TariffItem from './TariffItem';
-import { NavLink } from 'react-router-dom';
+
 export default function TableTariffs() {
   const { t } = useTranslation();
   const tariffs = t('tariffs', { returnObjects: true });
@@ -19,11 +22,12 @@ export default function TableTariffs() {
   const [aboutMore, onClickAboutMore] = useToggle();
 
 
+
   return (
-    <main className={styles.container}>
+    <main
+      className={styles.container}
+    >
       <section className={styles.container_tarrifs}>
-      
-       
         {tariffs.map(({ name, cost, speed, about_wifi, id }, index) => (
           <React.Fragment key={id}>
             {index === 0 && (
@@ -36,22 +40,22 @@ export default function TableTariffs() {
                 {t('tariffs_title.title_Vita')}
               </p>
             )}
-            {index === 6 && (
+            {index === 7 && (
               <p className={styles.titleOfTariffs}>
                 {t('tariffs_title.title_Pirogiv')}
               </p>
             )}
-            {index === 9 && (
+            {index === 11 && (
               <p className={styles.titleOfTariffs}>
                 {t('tariffs_title.title_Damba')}
               </p>
             )}
-            {index === 12 && (
+            {index === 14 && (
               <p className={styles.titleOfTariffs}>
                 {t('tariffs_title.title_Novi_Bezradichi')}
               </p>
             )}
-            {index === 15 && (
+            {index === 18 && (
               <p className={styles.titleOfTariffs}>
                 {t('tariffs_title.title_Green_wood')}
               </p>
@@ -64,6 +68,7 @@ export default function TableTariffs() {
               cost={cost}
               speed={speed}
               about_wifi={about_wifi}
+              id={id}
             />
           </React.Fragment>
         ))}

@@ -1,19 +1,29 @@
-import React from 'react';
-import { setModalConnect } from '../../redux/modal/modalAction';
+import React, { useEffect, useRef } from 'react';
+import PropTypes from 'prop-types';
 import { addToCart } from '../../redux/shop/shopActions';
 
+import DefaultServices from '../../assets/icon.services/DefaultServices-min.png';
+
 import useToggle from '../../hooks/useToggle';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import useMobile from '../../hooks/useMobile';
+
+import {
+  setFlip,
+  setCurrentIdFlip,
+  removeCurrentIdFlip,
+} from '../../redux/fliped/flipedAction';
+import { idFlipSelector } from '../../redux/fliped/flipedSelector';
 
 import { makeSuccessNotification } from '../../redux/notifications/notificationOperations';
 
 import styles from './ServiceItem.module.css';
 
 import Image from '../../common/Image/Image';
-// import { Scrollbars } from 'rc-scrollbars';
-import { Scrollbars } from 'react-custom-scrollbars';
+
+import { Scrollbars } from 'rc-scrollbars';
+
 import ReactCardFlip from 'react-card-flip';
 import MyButton from '../../common/MyButton/MyButton';
 
@@ -26,6 +36,7 @@ export default function ServiceItem({
   price,
   detailsPrice,
   icon,
+  iconGoole,
   descObj,
   onMonth,
   alt,
@@ -34,8 +45,12 @@ export default function ServiceItem({
 
   const [isFlip, onFlip] = useToggle();
 
+  const flipId = useSelector(idFlipSelector(_id));
+
   const dispatch = useDispatch();
+
   const isMobile = useMobile();
+
   const {
     ip,
     initiallSocket,
@@ -60,17 +75,47 @@ export default function ServiceItem({
         price,
         detailsPrice,
         icon,
+        iconGoole,
         onMonth,
         alt,
       })
     );
     dispatch(makeSuccessNotification('Додано в корзину'));
   };
+  useEffect(() => {
+    if (isFlip) {
+      dispatch(setFlip({ isFlip: isFlip, id: _id }));
+    } else {
+      dispatch(setFlip({ isFlip: isFlip, id: _id }));
+    }
+  }, [_id, dispatch, isFlip]);
+  useEffect(() => {
+    dispatch(removeCurrentIdFlip(_id));
+    return () => {
+      dispatch(removeCurrentIdFlip(_id));
+    };
+  }, [dispatch, _id]);
+
+  const handleOnClickNext = () => {
+    onFlip();
+    dispatch(setCurrentIdFlip(_id));
+  };
+  const handleOnClickPrev = () => {
+    onFlip();
+    dispatch(removeCurrentIdFlip(_id));
+  };
+  const styleWhenFliped = useRef({
+    display: 'flex',
+  });
   return (
     <ReactCardFlip isFlipped={isFlip} flipDirection="horizontal">
       <div className={styles.card__container}>
         <div className={styles.card__title}>
-          <Image src={t(icon)} alt={alt} className={styles.icons} />
+          <Image
+            src={icon ? icon : iconGoole}
+            alt={alt}
+            className={styles.icons}
+          />
           <p className={styles.title}>{t(title)}</p>
         </div>
 
@@ -84,7 +129,7 @@ export default function ServiceItem({
           </div>
 
           <div className={styles.container__buttons}>
-            <MyButton styles="services" onClick={onFlip}>
+            <MyButton styles="services" onClick={handleOnClickNext}>
               {t('ui.details')}
             </MyButton>
 
@@ -99,9 +144,14 @@ export default function ServiceItem({
         </div>
       </div>
 
-      <div className={styles.card__container_fliped}>
+      <div
+        className={styles.card__container_fliped}
+        style={
+          isMobile && flipId && flipId.id === _id ? styleWhenFliped.current : {}
+        }
+      >
         <div className={styles.buttonContainer}>
-          <MyButton styles="services" onClick={onFlip}>
+          <MyButton styles="services" onClick={handleOnClickPrev}>
             {t('ui.back')}
           </MyButton>
         </div>
@@ -127,6 +177,15 @@ export default function ServiceItem({
             </ul>
             <p className={styles.text_center}>{t(ip.description_subtitle_8)}</p>
             <p className={styles.text_center}>{t(ip.description_subtitle_7)}</p>
+            <div className={styles.order}>
+              <MyButton
+                styles="services"
+                onClick={handlerAddToCart}
+                variant="contained"
+              >
+                {t('ui.order')}
+              </MyButton>
+            </div>
           </>
         )}
         {ip && !isMobile && (
@@ -151,16 +210,43 @@ export default function ServiceItem({
             </ul>
             <p className={styles.text_center}>{t(ip.description_subtitle_8)}</p>
             <p className={styles.text_center}>{t(ip.description_subtitle_7)}</p>
+            <div className={styles.order}>
+              <MyButton
+                styles="services"
+                onClick={handlerAddToCart}
+                variant="contained"
+              >
+                {t('ui.order')}
+              </MyButton>
+            </div>
           </Scrollbars>
         )}
         {initiallSocket && (
           <>
             <p>{t(initiallSocket)}</p>
+            <div className={styles.order}>
+              <MyButton
+                styles="services"
+                onClick={handlerAddToCart}
+                variant="contained"
+              >
+                {t('ui.order')}
+              </MyButton>
+            </div>
           </>
         )}
         {additionalPatchCord && (
           <>
             <p>{t(additionalPatchCord)}</p>
+            <div className={styles.order}>
+              <MyButton
+                styles="services"
+                onClick={handlerAddToCart}
+                variant="contained"
+              >
+                {t('ui.order')}
+              </MyButton>
+            </div>
           </>
         )}
         {equipmentDelivery && (
@@ -169,6 +255,15 @@ export default function ServiceItem({
             <p>{t(equipmentDelivery.description_subtitle_2)}</p>
             <p>{t(equipmentDelivery.description_subtitle_3)}</p>
             <p>{t(equipmentDelivery.description_subtitle_4)}</p>
+            <div className={styles.order}>
+              <MyButton
+                styles="services"
+                onClick={handlerAddToCart}
+                variant="contained"
+              >
+                {t('ui.order')}
+              </MyButton>
+            </div>
           </>
         )}
         {ConfNetCard && (
@@ -184,6 +279,15 @@ export default function ServiceItem({
               <p>{t(ConfNetCard.description_subtitle_2)}</p>
               <p>{t(ConfNetCard.description_subtitle_3)}</p>
             </ul>
+            <div className={styles.order}>
+              <MyButton
+                styles="services"
+                onClick={handlerAddToCart}
+                variant="contained"
+              >
+                {t('ui.order')}
+              </MyButton>
+            </div>
           </>
         )}
         {cableInsurance && (
@@ -191,12 +295,30 @@ export default function ServiceItem({
             <p>{t(cableInsurance.description_subtitle_1)}</p>
             <p>{t(cableInsurance.description_subtitle_2)}</p>
             <p>{t(cableInsurance.description_subtitle_3)}</p>
+            <div className={styles.order}>
+              <MyButton
+                styles="services"
+                onClick={handlerAddToCart}
+                variant="contained"
+              >
+                {t('ui.order')}
+              </MyButton>
+            </div>
           </>
         )}
         {opricalCableInsurance && (
           <>
             <p>{t(opricalCableInsurance.description_subtitle_1)}</p>
             <p>{t(opricalCableInsurance.description_subtitle_2)}</p>
+            <div className={styles.order}>
+              <MyButton
+                styles="services"
+                onClick={handlerAddToCart}
+                variant="contained"
+              >
+                {t('ui.order')}
+              </MyButton>
+            </div>
           </>
         )}
         {cableInstallation && (
@@ -204,6 +326,15 @@ export default function ServiceItem({
             <p>{t(cableInstallation.description_subtitle_1)}</p>
             <p>{t(cableInstallation.description_subtitle_2)}</p>
             <p>{t(cableInstallation.description_subtitle_3)}</p>
+            <div className={styles.order}>
+              <MyButton
+                styles="services"
+                onClick={handlerAddToCart}
+                variant="contained"
+              >
+                {t('ui.order')}
+              </MyButton>
+            </div>
           </>
         )}
         {punchingHoles && (
@@ -211,6 +342,15 @@ export default function ServiceItem({
             <p>{t(punchingHoles.description_subtitle_1)}</p>
             <p>{t(punchingHoles.description_subtitle_2)}</p>
             <p>{t(punchingHoles.description_subtitle_3)}</p>
+            <div className={styles.order}>
+              <MyButton
+                styles="services"
+                onClick={handlerAddToCart}
+                variant="contained"
+              >
+                {t('ui.order')}
+              </MyButton>
+            </div>
           </>
         )}
         {boxAssembly && (
@@ -219,6 +359,15 @@ export default function ServiceItem({
             <p>{t(boxAssembly.description_subtitle_2)}</p>
             <p>{t(boxAssembly.description_subtitle_3)}</p>
             <p>{t(boxAssembly.description_subtitle_4)}</p>
+            <div className={styles.order}>
+              <MyButton
+                styles="services"
+                onClick={handlerAddToCart}
+                variant="contained"
+              >
+                {t('ui.order')}
+              </MyButton>
+            </div>
           </>
         )}
         {installSwitch && (
@@ -231,6 +380,15 @@ export default function ServiceItem({
               <li>{t(installSwitch.description_subtitle_l3)}</li>
               <li>{t(installSwitch.description_subtitle_l4)}</li>
             </ul>
+            <div className={styles.order}>
+              <MyButton
+                styles="services"
+                onClick={handlerAddToCart}
+                variant="contained"
+              >
+                {t('ui.order')}
+              </MyButton>
+            </div>
           </>
         )}
         {configuringRouter && isMobile && (
@@ -262,6 +420,15 @@ export default function ServiceItem({
               <li>{t(configuringRouter.description_subtitle_l_4)}</li>
             </ul>
             <p>{t(configuringRouter.description_subtitle_6)}</p>
+            <div className={styles.order}>
+              <MyButton
+                styles="services"
+                onClick={handlerAddToCart}
+                variant="contained"
+              >
+                {t('ui.order')}
+              </MyButton>
+            </div>
           </>
         )}
         {configuringRouter && !isMobile && (
@@ -293,9 +460,25 @@ export default function ServiceItem({
               <li>{t(configuringRouter.description_subtitle_l_4)}</li>
             </ul>
             <p>{t(configuringRouter.description_subtitle_6)}</p>
+            <div className={styles.order}>
+              <MyButton
+                styles="services"
+                onClick={handlerAddToCart}
+                variant="contained"
+              >
+                {t('ui.order')}
+              </MyButton>
+            </div>
           </Scrollbars>
         )}
       </div>
     </ReactCardFlip>
   );
 }
+ServiceItem.proprTypes = {
+  icon: PropTypes.string,
+};
+
+ServiceItem.defaultProps = {
+  icon: DefaultServices,
+};

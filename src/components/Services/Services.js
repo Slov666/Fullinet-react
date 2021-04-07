@@ -8,12 +8,25 @@ import '../../utils/i18next';
 
 import ServiceItem from './ServiceItem';
 import DropMenu from '../../common/DropMenu/DropMenu';
-import { Container } from '@material-ui/core';
+
+
+import { arrWithIconsService } from '../../helpers/icons.services';
 
 export default function Services() {
   const { t } = useTranslation();
   const [about, onClickAbout] = useToggle();
   const services = t('services', { returnObjects: true });
+
+  const newServicesOj = services.map((item, index) => {
+    const arrWitchImg = arrWithIconsService.find((img) => {
+      return img._id === item._id;
+    });
+
+    if (arrWitchImg) {
+      return { ...item, ...arrWitchImg };
+    }
+    return item;
+  });
 
 
   return (
@@ -37,7 +50,7 @@ export default function Services() {
       </div>
 
       <section className={styles.main}>
-        {services.map(
+        {newServicesOj.map(
           ({
             _id,
             descriptions,
@@ -47,7 +60,8 @@ export default function Services() {
             icon,
             descObj,
             onMonth,
-            alt
+            alt,
+            img,
           }) => (
             <ServiceItem
               key={`card-${_id}`}
@@ -56,7 +70,8 @@ export default function Services() {
               title={title}
               price={price}
               detailsPrice={detailsPrice}
-              icon={icon}
+              icon={img}
+              iconGoole={icon}
               descObj={descObj}
               onMonth={onMonth}
               alt={alt}

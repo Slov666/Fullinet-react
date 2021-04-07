@@ -6,9 +6,7 @@ import { useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import '../../utils/i18next';
 
-import { setModalConnect } from '../../redux/modal/modalAction';
 
-import Button from '@material-ui/core/Button';
 import MenuIcon from '@material-ui/icons/Menu';
 import IconButton from '@material-ui/core/IconButton';
 
@@ -48,20 +46,15 @@ export default function Main() {
               unmountOnExit
             >
               <>
-
-      
-
                 {notIncluded && (
                   <ul className={css.notIncluded_ul}>
                     <li>
-                      Ви можете дивитись інформацію про тарифи на персональному
-                      комп'ютері. Телефон поки що не підтримується
+                      Ви можете дивитись інформацію про тарифи.
                     </li>
                     <li>
                       Ви можите замовити тариф чи послугу по телефону.
                       Детальніше в контактах{' '}
                     </li>
-                    <li>Деякі картинки можуть не загрузитись</li>
                   </ul>
                 )}
               </>

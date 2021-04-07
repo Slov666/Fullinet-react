@@ -67,10 +67,7 @@
   .price_container_fliped {
     grid-template-rows: 56px 56px 56px;
   }
-  /* .container {
-    display: grid;
-    grid-template-columns: 564px 153px;
-  } */
+
   .price_container {
     display: inline-block;
     position: fixed;
@@ -92,7 +89,8 @@
     font-size: 18px;
   }
   .price {
-    width: 100%;
+    width: 260px;
+    text-align: start;
     margin-bottom: 20px;
     padding: 0px 1px 0px 0px;
   }

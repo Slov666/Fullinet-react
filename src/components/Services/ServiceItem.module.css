@@ -1,6 +1,13 @@
 .main {
-  padding: 70px 20px 213px;
+  padding: 70px 20px 40px;
   text-align: center;
+}
+.order {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 90px;
+  margin: 0 auto;
 }
 .container_dropMenu {
   padding: 80px 0px 0px;
@@ -34,10 +41,12 @@
 }
 .card__container_fliped {
   composes: card__container;
+  display: none;
   line-height: 24px;
   text-align: start;
   background-color: rgba(241, 241, 241, 0.7);
   flex-direction: column;
+  min-height: 200px;
 }
 .buttonContainer {
   margin: 0 auto;
@@ -101,10 +110,14 @@
     margin-bottom: 30px;
   }
 }
-@media (min-width: 768px) {
+@media (min-width: 897px) {
+  .card__container_fliped {
+    display: block;
+  }
   .card__container {
     max-width: 480px;
     min-height: 304px;
+    display: flex;
   }
   .main {
     display: flex;
@@ -118,18 +131,27 @@
 }
 @media (min-width: 1024px) {
   .card__container {
-    margin-right: 10px;
+    margin: 0 auto;
+    margin-left: 15px;
+    margin-bottom: 15px;
+    min-height: 330px;
   }
   .main {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    margin: 0 auto;
+    max-width: 1212px;
   }
 }
 @media (min-width: 1630px) {
+  .card__container {
+    margin-bottom: 30px;
+  }
   .main {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     padding: 35px 50px;
+    max-width: 1720px;
   }
   .container_dropMenu_2 {
     padding: 0px;

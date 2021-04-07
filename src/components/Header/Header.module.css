@@ -5,7 +5,7 @@
   font-size: 16px;
   text-align: start;
 }
-@media (max-width: 767px) {
+@media (max-width: 897px) {
   .header {
     display: flex;
     justify-content: space-between;
@@ -29,7 +29,7 @@
 .buttonChangeLang:focus {
   background-color: rgba(0, 0, 0, 0.2);
 }
-@media (min-width: 767px) {
+@media (min-width: 898px) {
   .buttonChangeLang {
     background: transparent;
     font-size: 16px;

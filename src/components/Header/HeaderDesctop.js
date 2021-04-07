@@ -39,6 +39,7 @@ export default function HeaderDesctop() {
   const changleLanguage = (lang) => {
     i18n.changeLanguage(lang);
   };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const onClickLang = useCallback((e) => {
     changleLanguage(e.target.id === 'ua' ? 'ru' : 'ua');
   });
@@ -50,7 +51,7 @@ export default function HeaderDesctop() {
     <nav className={style.header}>
       <NavLink to={'/home'} exact>
         <p className={style.logo}>
-          <span>FULL</span>INNET
+          <span>FULL</span>INET
         </p>
       </NavLink>
       <div className={style.menu}>

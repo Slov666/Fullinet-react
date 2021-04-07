@@ -1,14 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import  store  from './redux/store';
+import { store, persistor } from './redux/store';
 import './styles/index.css';
 import { HashRouter } from 'react-router-dom';
 
 import App from './components/App';
 
 ReactDOM.render(
-  <Provider store={store}>
+  <Provider store={store} persistor={persistor}>
     <HashRouter>
       <App />
     </HashRouter>
