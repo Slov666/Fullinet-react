@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 const useStylesTariffs = makeStyles(() => ({
   root: {
-    padding: '0',
+    padding: '2',
     fontSize: '10px',
   },
 }));

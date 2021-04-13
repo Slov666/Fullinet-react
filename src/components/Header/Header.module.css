@@ -5,6 +5,24 @@
   font-size: 16px;
   text-align: start;
 }
+.container_buttons {
+  margin-right: 40px;
+}
+.qty {
+  position: absolute;
+  top: 5px;
+  left: 31px;
+  font-size: 14px;
+  color: rgb(245, 236, 116);
+  text-shadow: 1px 1px #332f1e;
+  width: 20px;
+  height: 20px;
+  background-color: rgba(255, 228, 196, 0.3);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 @media (max-width: 897px) {
   .header {
     display: flex;
@@ -18,7 +36,7 @@
   background: transparent;
   font-size: 16px;
   padding: 5px;
-  margin: 0px 55px 0px 0px;
+  margin: 0px 10px 0px 0px;
   color: #ffffff;
   text-shadow: 1px 1px #000000;
   font-weight: 500;

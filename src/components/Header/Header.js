@@ -1,9 +1,11 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setModalShop } from '../../redux/modal/modalAction';
 import clsx from 'clsx';
 import { NavLink } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
+import { cartSelector } from '../../redux/shop/shopSelectors';
+
 import Drawer from '@material-ui/core/Drawer';
 import Button from '@material-ui/core/Button';
 import List from '@material-ui/core/List';
@@ -17,7 +19,7 @@ import GavelIcon from '@material-ui/icons/Gavel';
 import MenuIcon from '@material-ui/icons/Menu';
 import Typography from '@material-ui/core/Typography';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
-
+import IconButton from '@material-ui/core/IconButton';
 
 import { useTranslation } from 'react-i18next';
 import '../../utils/i18next';
@@ -25,6 +27,23 @@ import '../../utils/i18next';
 import style from './Header.module.css';
 
 export default function Header() {
+  const useStyle = makeStyles(() => ({
+    root: {
+      color: 'rgb(235, 235, 235)',
+      fill: 'rgb(235, 235, 235)',
+    },
+  }));
+  const styles = useStyle();
+  const cart = useSelector(cartSelector);
+  const [cartCount, setCartCount] = useState(0);
+  useEffect(() => {
+    let count = 0;
+    cart.forEach((item) => {
+      count += item.qty;
+    });
+    setCartCount(count);
+  }, [cart, cartCount]);
+
   const dispatch = useDispatch();
   const [locales, setLocales] = useState(null);
 
@@ -163,13 +182,19 @@ export default function Header() {
           {list(<MenuIcon />)}
         </Drawer>
       </nav>
-      <button
-        className={style.buttonChangeLang}
-        id={locales}
-        onClick={(e) => onClickLang(e)}
-      >
-        {locales === 'ua' ? 'Рус' : 'Укр'}
-      </button>
+      <div className={style.container_buttons}>
+        <button
+          className={style.buttonChangeLang}
+          id={locales}
+          onClick={(e) => onClickLang(e)}
+        >
+          {locales === 'ua' ? 'Рус' : 'Укр'}
+        </button>
+        <IconButton onClick={() => dispatch(setModalShop(true))}>
+          <ShoppingCartIcon classes={styles} />
+          <div className={style.qty}>{cartCount}</div>
+        </IconButton>
+      </div>
     </header>
   );
 }

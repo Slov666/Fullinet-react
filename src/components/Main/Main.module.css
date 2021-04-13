@@ -73,6 +73,15 @@
     margin: 0 auto;
   }
 }
+@media (min-width: 1168px) {
+  .contact_info {
+    width: 600px;
+  }
+  .contact_info_schedule {
+    max-width: 600px;
+  }
+}
+
 @media (min-width: 1280px) {
   .subtitle {
     margin-bottom: 40px;

@@ -16,7 +16,7 @@
 .containerBtn {
   margin: 0 auto;
 }
-@media (max-width: 768px) {
+@media (max-width: 897px) {
   .abonent {
     width: 280px;
   }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import styles from './ConnectElemet.module.css';
 import { modalConnectSelector } from '../../../../redux/modal/modalSelectors';
@@ -12,9 +12,23 @@ import SendIcon from '@material-ui/icons/Send';
 export default function ConnectElement() {
   const { t } = useTranslation();
   const tariff = useSelector(modalConnectSelector);
+
+  const [name, setName] = useState('');
+  const [phone, setPhone] = useState('');
+  const [address, setAddress] = useState('');
+
+  const handlerOnSubmit = (e) => {
+    e.preventDefault();
+    console.log(name);
+  };
+
+  const handleOnChangeName = (e) => {
+    setName(e.target.value);
+  };
+
   return (
     <div>
-      <form className={styles.form}>
+      <form className={styles.form} onSubmit={handlerOnSubmit}>
         <div className={styles.tariff}>
           <MyInput
             disabled
@@ -32,14 +46,38 @@ export default function ConnectElement() {
             defaultValue={tariff.name}
           />
         </div>
+
         <div className={styles.abonent}>
-          <MyInput label={t('form.yourName')} />
-          <MyInput label={t('form.yourPhone')} />
-          <MyInput label={t('form.yourAddress')} />
+          <MyInput
+            type="text"
+            value={name}
+            onChange={handleOnChangeName}
+            label={t('form.yourName')}
+          />
+
+          <MyInput
+            type="text"
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
+            label={t('form.yourPhone')}
+          />
+
+          <MyInput
+            type="text"
+            value={address}
+            onChange={(e) => setAddress(e.target.value)}
+            label={t('form.yourAddress')}
+          />
         </div>
+
         <div className={styles.containerBtn}>
-          <Button variant="contained" color="primary" endIcon={<SendIcon />}>
-            Відправити
+          <Button
+            type="submit"
+            variant="contained"
+            color="primary"
+            endIcon={<SendIcon />}
+          >
+            {t('ui.send')}
           </Button>
         </div>
       </form>

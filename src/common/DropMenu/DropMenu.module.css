@@ -1,5 +1,4 @@
 .container {
-  width: 280px;
   margin: 0 auto;
   margin-bottom: 12px;
   background-color: rgba(241, 241, 241, 0.4);
@@ -37,9 +36,6 @@
   margin-bottom: 12px;
 }
 @media (min-width: 374px) {
-  .container{
-    width: 335px;
-  }
   .container_content {
     max-width: 335px;
   }
@@ -49,7 +45,7 @@
   .container {
     margin: 0 auto;
     margin-bottom: 20px;
-    max-width: 400px;
+    width: 400px;
   }
   .container_content {
     max-width: 600px;

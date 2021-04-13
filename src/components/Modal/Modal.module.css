@@ -66,7 +66,7 @@
 .centerShop {
   width: 100%;
 }
-@media (max-width: 767px) {
+@media (max-width: 897px) {
   .centerShop{
     top: 38px;
   }
@@ -82,7 +82,7 @@
   }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 897px) {
   .modalBase {
     background-color: var(--whiteColor);
     height: 100%;
@@ -105,9 +105,10 @@
 
   .center {
     width: 688px;
-    height: 372px;
+    height: 477px;
     justify-content: center;
     align-items: center;
+    background-color: var(--whiteColor);
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);

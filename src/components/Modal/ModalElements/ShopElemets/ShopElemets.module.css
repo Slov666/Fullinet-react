@@ -63,7 +63,7 @@
   width: 250px;
   height: 230px;
 }
-@media (max-width: 768px) {
+@media (max-width: 897px) {
   .price_container_fliped {
     grid-template-rows: 56px 56px 56px;
   }
@@ -89,7 +89,7 @@
     font-size: 18px;
   }
   .price {
-    width: 260px;
+    width: 197px;
     text-align: start;
     margin-bottom: 20px;
     padding: 0px 1px 0px 0px;
@@ -112,7 +112,7 @@
   }
 }
 
-@media (min-width: 630px) and (max-width: 768px) {
+@media (min-width: 630px) and (max-width: 896px) {
   .price_container {
     grid-template-columns: 204px 215px 193px;
   }
@@ -128,7 +128,7 @@
     border: none;
   }
 }
-@media (min-width: 767px) {
+@media (min-width: 897px) {
   .container {
     display: grid;
     grid-template-columns: 564px 153px;

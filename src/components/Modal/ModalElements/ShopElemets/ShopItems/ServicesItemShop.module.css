@@ -41,7 +41,7 @@
   font-weight: 700;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 897px) {
   .container_btnAndIcon {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -101,7 +101,7 @@
     padding: 0px 0px 0px 20px;
   }
 }
-@media (min-width: 768px) {
+@media (min-width: 897px) {
   .plus {
     background-color: rgba(0, 128, 0, 0.4);
   }
