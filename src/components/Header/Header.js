@@ -172,7 +172,7 @@ export default function Header() {
           align="right"
           variant="h6"
         >
-          Fullinet
+          FULLINET
         </Typography>
         <Drawer
           anchor={'left'}

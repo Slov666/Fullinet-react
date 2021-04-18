@@ -10,7 +10,6 @@ import { useTranslation } from 'react-i18next';
 import useMobile from '../../hooks/useMobile';
 
 import {
-  setFlip,
   setCurrentIdFlip,
   removeCurrentIdFlip,
 } from '../../redux/fliped/flipedAction';
@@ -80,15 +79,9 @@ export default function ServiceItem({
         alt,
       })
     );
-    dispatch(makeSuccessNotification('Додано в корзину'));
+    dispatch(makeSuccessNotification(t('shop.addToCart')));
   };
-  useEffect(() => {
-    if (isFlip) {
-      dispatch(setFlip({ isFlip: isFlip, id: _id }));
-    } else {
-      dispatch(setFlip({ isFlip: isFlip, id: _id }));
-    }
-  }, [_id, dispatch, isFlip]);
+
   useEffect(() => {
     dispatch(removeCurrentIdFlip(_id));
     return () => {

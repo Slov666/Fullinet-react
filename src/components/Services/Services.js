@@ -1,6 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import useToggle from '../../hooks/useToggle';
+import useTitle from '../../hooks/useTitle';
 
 import styles from './ServiceItem.module.css';
 
@@ -9,15 +10,16 @@ import '../../utils/i18next';
 import ServiceItem from './ServiceItem';
 import DropMenu from '../../common/DropMenu/DropMenu';
 
-
 import { arrWithIconsService } from '../../helpers/icons.services';
 
 export default function Services() {
   const { t } = useTranslation();
+  useTitle(t('nav.services'));
+
   const [about, onClickAbout] = useToggle();
   const services = t('services', { returnObjects: true });
 
-  const newServicesOj = services.map((item, index) => {
+  const newServicesOj = services.map((item) => {
     const arrWitchImg = arrWithIconsService.find((img) => {
       return img._id === item._id;
     });
@@ -28,14 +30,13 @@ export default function Services() {
     return item;
   });
 
-
   return (
     <main>
       <div className={styles.container_dropMenu}>
         <DropMenu
           onClick={onClickAbout}
           click={about}
-          title={'Корпоративним клієнтам Fullinet пропонує: '}
+          title={t('corporateClients.title')}
         >
           <ul className={styles.container_ul}>
             <li>{t('corporateClients.descriprion_l1')}</li>

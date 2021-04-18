@@ -13,9 +13,11 @@
     "cart_empty": "Ваша корзина пуста..",
     "total_services": "Общее количество услуг:",
     "one_pay_price": "Цена одним платежом:",
-    "month_pay_price": "Цена в месяц:"
+    "month_pay_price": "Цена в месяц:",
+    "addToCart": "Добавлено в корзину"
   },
   "corporateClients": {
+    "title": "Корпоративным клиентам Fullinet предлагает :",
     "descriprion_l1": "организацию индивидуальных каналов связи;",
     "descriprion_l2": " создание локальных сетей;",
     "descriprion_l3": "создание видео локального наблюдения, а также удаленного;",
@@ -27,8 +29,12 @@
   "nav": {
     "main": "Главная",
     "services": "Услуги",
-    "office": "Кабинет"
+    "office": "Кабинет",
+    "connect": "Подключение"
   },
+
+  "recapchaHL": "ru",
+
   "contact_info": {
     "work_schedule": "График работы",
     "work_schedule_time": "ПН - ПТ 10:00-18:00",
@@ -47,9 +53,15 @@
     "link_Slavik": "сайт создал"
   },
   "form": {
-    "yourName": "Ваше имя",
-    "yourPhone": "Ваш номер телефона",
-    "yourAddress": "Ваш адрес"
+    "yourName": "Ваше имя*",
+    "yourPhone": "Ваш номер телефона*",
+    "yourAddress": "Ваш адрес*"
+  },
+  "validation": {
+    "valid": "Все верно",
+    "invalidName": "Имя должно минимум 2 символов",
+    "invalidPhone": "Номер телефона должен быть минимум 8 символов",
+    "invalidAddress": "Адрес должен быть минимум 8 символов"
   },
   "ui": {
     "details": "Детальнее",
@@ -70,7 +82,7 @@
     "title_Green_wood": "Тарифи на оптический интернет Green Wood",
 
     "additionalInformationServices": {
-      "aditionalInfo": "Допонительная информация",
+      "aditionalInfo": "Дополнительная информация",
       "noMaterial": "Cтоимость услуг не включает стоимость материалов.",
       "money": "Месячная оплата будет списываться автоматически вашего личного счёта"
     },

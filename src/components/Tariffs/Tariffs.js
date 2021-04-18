@@ -8,6 +8,7 @@ import { useSelector } from 'react-redux';
 import useMobile from '../../hooks/useMobile';
 import useToggle from '../../hooks/useToggle';
 import { useTranslation } from 'react-i18next';
+import useTitle from '../../hooks/useTitle';
 
 import DropMenu from '../../common/DropMenu/DropMenu';
 import MenuIcon from '@material-ui/icons/Menu';
@@ -16,17 +17,14 @@ import TariffItem from './TariffItem';
 
 export default function TableTariffs() {
   const { t } = useTranslation();
+  useTitle(t('nav.main'));
   const tariffs = t('tariffs', { returnObjects: true });
 
   const [notIncluded, onClicknotIncluded] = useToggle();
   const [aboutMore, onClickAboutMore] = useToggle();
 
-
-
   return (
-    <main
-      className={styles.container}
-    >
+    <main className={styles.container}>
       <section className={styles.container_tarrifs}>
         {tariffs.map(({ name, cost, speed, about_wifi, id }, index) => (
           <React.Fragment key={id}>

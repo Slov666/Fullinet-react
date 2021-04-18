@@ -15,20 +15,29 @@ import { combineReducers } from 'redux';
 import { modal } from './modal/modalReducer';
 import { shop } from './shop/shopReducer';
 import notification from './notifications/notificationReduser';
-import { isFlip, flipId } from './fliped/flipedReducer';
+import {  flipId } from './fliped/flipedReducer';
+import { responseTariff } from './tarrifs/tariffsReducer';
+import { credentials } from './tarrifs/tariffsReducer';
 
-const persistConfig = {
+const persistConfigCart = {
   key: 'cart',
   storage,
 };
-const ui = combineReducers({ modal, notification, isFlip, flipId });
+const persisConfigCredentials = {
+  key: 'credentials',
+  storage,
+};
+const ui = combineReducers({ modal, notification, activeflipId:  flipId});
 
-const persistShop = persistReducer(persistConfig, shop);
+const persistShop = persistReducer(persistConfigCart, shop);
+const persistCredentials = persistReducer(persisConfigCredentials, credentials);
 
 export const store = configureStore({
   reducer: {
     persistShop,
     ui,
+    responseTariff,
+    persistCredentials,
   },
   middleware: getDefaultMiddleware({
     serializableCheck: {
@@ -37,5 +46,3 @@ export const store = configureStore({
   }),
 });
 export const persistor = persistStore(store);
-
-

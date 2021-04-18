@@ -5,11 +5,11 @@ import useMobile from '../../hooks/useMobile';
 import useToggle from '../../hooks/useToggle';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  setFlip,
   setCurrentIdFlip,
   removeCurrentIdFlip,
 } from '../../redux/fliped/flipedAction';
 import { idFlipSelector } from '../../redux/fliped/flipedSelector';
+
 
 import { setModalConnect } from '../../redux/modal/modalAction';
 
@@ -30,14 +30,6 @@ export default function TariffItem({ cost, speed, name, about_wifi, id }) {
   const dispatch = useDispatch();
 
   const isMobile = useMobile();
-
-  useEffect(() => {
-    if (isFlip) {
-      dispatch(setFlip({ isFlip: isFlip, id: id }));
-    } else {
-      dispatch(setFlip({ isFlip: isFlip, id: id }));
-    }
-  }, [dispatch, isFlip, id]);
 
   useEffect(() => {
     dispatch(removeCurrentIdFlip(id));

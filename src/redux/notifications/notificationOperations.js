@@ -16,3 +16,11 @@ export const makeAlertNotification = (text) => (dispatch) => {
   dispatch(setNotification(params));
   setTimeout(() => dispatch(unsetNotification()), 4000);
 };
+export const makeSuccessSendedNotification = (text) => (dispatch) => {
+  const params = {
+    type: "successSended",
+    message: text,
+  };
+  dispatch(setNotification(params));
+  setTimeout(() => dispatch(unsetNotification()), 3500);
+};

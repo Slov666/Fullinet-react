@@ -13,21 +13,21 @@ import IconButton from '@material-ui/core/IconButton';
 import style from './Main.module.css';
 
 // test
-import css from '../../components/Tariffs/Tariffs.module.css';
+// import css from '../../components/Tariffs/Tariffs.module.css';
 
 export default function Main() {
   const [isOpenSchedule, onClickSchedule] = useToggle();
   const [isOpenContacts, onClickContacts] = useToggle();
-  const dispatch = useDispatch();
+
   const { t } = useTranslation();
 
   //test
-  const [notIncluded, onClicknotIncluded] = useToggle();
+  // const [notIncluded, onClicknotIncluded] = useToggle();
 
   return (
     <main className={style.container}>
       <article className={style.primaryContainer}>
-        <>
+        {/* <>
           <div className={css.container_dropMenu}>
             <p onClick={onClicknotIncluded} className={css.notIncluded}>
               <span>
@@ -60,7 +60,7 @@ export default function Main() {
               </>
             </CSSTransition>
           </div>
-        </>
+        </> */}
 
         <div className={style.contact_info}>
           <p onClick={onClickSchedule} className={style.contact_info_schedule}>

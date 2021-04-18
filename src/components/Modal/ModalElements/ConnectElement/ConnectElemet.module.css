@@ -1,6 +1,19 @@
+.valid{
+  color: rgb(54, 165, 54) !important;
+  transition: all 350ms;
+}
 .form {
   display: flex;
   flex-direction: column;
+}
+.validation {
+  height: 30px;
+  font-size: 13px;
+  color: #d66464;
+  margin-left: 17px;
+  transition: all 350ms;
+  margin: 0 auto;
+  
 }
 .tariff {
   display: flex;
@@ -15,9 +28,50 @@
 }
 .containerBtn {
   margin: 0 auto;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+@media (min-width: 375px) {
+  .containerBtn {
+    width: 350px;
+    display: flex;
+    flex-direction: initial;
+  }
+}
+@media (min-width: 897px) {
+  .containerBtn {
+    width: 480px;
+    height: 77px;
+    flex-direction: row-reverse;
+  }
+  .abonent {
+    width: 530px;
+    flex-wrap: wrap;
+    flex-direction: row;
+  }
+  .validation{
+    display: inline-block;
+    margin-top: 20px;
+    width: 245px;
+  }
 }
 @media (max-width: 897px) {
   .abonent {
     width: 280px;
+    margin-bottom: 0px;
+  }
+  .containerBtn {
+    flex-direction: column-reverse;
+    height: 180px;
+  }
+  .validation{
+    text-align: center;
+    margin-bottom: 6px;
+  }
+  .form{
+    padding-top: 10px;
   }
 }

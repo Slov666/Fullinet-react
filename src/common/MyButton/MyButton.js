@@ -2,22 +2,30 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
-const useStylesTariffs = makeStyles(() => ({
-  root: {
-    padding: '2',
-    fontSize: '10px',
-  },
-}));
-const useStylesServices = makeStyles(() => ({
-  root: {
-    fontSize: '12px',
-  },
-}));
-
+import useMobile from '../../hooks/useMobile';
 
 export default function MyButton({ onClick, styles, children, ...rest }) {
-  const styledComponentTarrifs= useStylesTariffs();
+  const isMobile = useMobile();
+  const useStylesTariffs = makeStyles(() => ({
+    root: {
+      padding: '2',
+      fontSize: '10px',
+    },
+  }));
+  const useStylesServices = makeStyles(() => ({
+    root: {
+      fontSize: '12px',
+    },
+  }));
+  const useStylesServicesSended = makeStyles(() => ({
+    root: {
+      fontSize: '12px',
+      height: isMobile ? '35px' : '50px',
+    },
+  }));
+  const styledComponentTarrifs = useStylesTariffs();
   const styledComponentServices = useStylesServices();
+  const styledComponentServicesSended = useStylesServicesSended();
   let style;
   switch (styles) {
     case 'tariffs':
@@ -26,20 +34,23 @@ export default function MyButton({ onClick, styles, children, ...rest }) {
     case 'services':
       style = styledComponentServices;
       break;
+    case 'servicesSended':
+      style = styledComponentServicesSended;
+      break;
 
     default:
       break;
   }
   return (
-    <Button
-      size="small"
-      color="primary"
-      className={style.root}
-      onClick={onClick}
-      {...rest}
-    >
-      {children}
-    </Button>
+      <Button
+        size="small"
+        color="primary"
+        className={style.root}
+        onClick={onClick}
+        {...rest}
+      >
+        {children}
+      </Button>
   );
 }
 Button.proprTypes = {

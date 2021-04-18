@@ -8,8 +8,10 @@ export default function MyInput({ value, onChange, ...other }) {
 
   const useStyles = makeStyles(() => ({
     root: {
-      padding: '7px 5px',
+      padding: '2px 5px',
       marginBottom: '5px',
+      display: 'inline-block',
+      margin: "0 auto",
     },
   }));
   const styles = useStyles();

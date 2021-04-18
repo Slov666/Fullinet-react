@@ -18,6 +18,13 @@
 .success {
   background-color: rgb(105, 185, 25);
 }
+.successSended{
+  transform: translate(-50%, -50%);
+  background-color: rgb(105, 185, 25);
+  top: 25%;
+  left: 50%;
+  text-align: center;
+}
 
 @media (min-width: 768px) {
   .box {
