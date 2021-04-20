@@ -5,7 +5,6 @@ import { addToCart, removeFromCart, increment, decrement } from './shopActions';
 
 const INITIAL_STATE = {
   cart: [],
-  currentItem: null,
 };
 
 const cartReducer = createReducer(INITIAL_STATE, {
