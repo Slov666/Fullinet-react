@@ -17,11 +17,13 @@ import {
   getNameSelector,
   getPhoneSelector,
 } from '../../../../redux/tarrifs/tariffSelectors';
+import { isAnyModalOpenSelector } from '../../../../redux/modal/modalSelectors';
 import {
   setNameAction,
   setPhoneAction,
   setAddressAction,
 } from '../../../../redux/tarrifs/tariffsAction';
+import { makeAlertNotification } from '../../../../redux/notifications/notificationOperations';
 import {
   setCurrentIdFlip,
   removeCurrentIdFlip,
@@ -55,7 +57,7 @@ export default function ShopElements() {
   const nameRedux = useSelector(getNameSelector);
   const phoneRedux = useSelector(getPhoneSelector);
   const tariffRedux = useSelector(getAddressSelector);
-  const modalShopStatus = useSelector(modalShopSelector);
+  const isAnyModalOpen = useSelector(isAnyModalOpenSelector);
 
   const idButtonForStyles = useRef('buttonNextShop');
   const flipId = useSelector(idFlipSelector(idButtonForStyles.current));
@@ -69,10 +71,11 @@ export default function ShopElements() {
 
   useEffect(() => {
     return () => {
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-      dispatch(removeCurrentIdFlip(idButtonForStyles.current));
+      if (!isAnyModalOpen) {
+        dispatch(removeCurrentIdFlip(idButtonForStyles.current));
+      }
     };
-  }, []);
+  }, [dispatch, isAnyModalOpen]);
   useEffect(() => {
     if (nameRedux && nameRedux.length >= 2) setValidName(true);
     if (nameRedux && nameRedux.length < 2) setValidName(false);
@@ -114,8 +117,22 @@ export default function ShopElements() {
     totalItemsAtMonth,
     totalItemsOnePay,
   ]);
-  const handlerOnSubmit = async (e) => {
+  const handlerOnSubmit = (e) => {
     e.preventDefault();
+    if (!token) {
+      dispatch(makeAlertNotification(t('validation.tokenAlert')));
+      return;
+    }
+    if (!validName) {
+      dispatch(makeAlertNotification(t('validation.alertIdName')));
+      return;
+    }
+    if (!validPhone) {
+      dispatch(makeAlertNotification(t('validation.alertIdPhone')));
+    }
+    if (!validAddress) {
+      dispatch(makeAlertNotification(t('validation.alertIdAddress')));
+    }
     const credentials = {
       name: nameRedux,
       phone: phoneRedux,
@@ -176,11 +193,17 @@ export default function ShopElements() {
   });
 
   return (
-    <ReactCardFlip isFlipped={isFlip} flipDirection="horizontal">
-      <section style={
-            isMobile && flipId && flipId.id === idButtonForStyles.current
-              ? styleWhenFlipedFront.current
-              : {}}>
+    <ReactCardFlip
+      isFlipped={flipId && flipId.id === idButtonForStyles.current}
+      flipDirection="horizontal"
+    >
+      <section
+        style={
+          isMobile && flipId && flipId.id === idButtonForStyles.current
+            ? styleWhenFlipedFront.current
+            : {}
+        }
+      >
         <h2 className={styles.title}>Ваша корзина</h2>
 
         <div className={styles.price_container}>
@@ -225,7 +248,8 @@ export default function ShopElements() {
           style={
             isMobile && flipId && flipId.id === idButtonForStyles.current
               ? styleWhenFliped.current
-              : {}}
+              : {}
+          }
         >
           <form className={styles.form} onSubmit={handlerOnSubmit}>
             <div className={styles.abonent}>

@@ -9,7 +9,7 @@
   position: fixed;
   top: 10px;
   right: 10px;
-  z-index: 9000;
+  z-index: 90001111111111111111111111;
 }
 
 .alert {
@@ -18,14 +18,28 @@
 .success {
   background-color: rgb(105, 185, 25);
 }
-.successSended{
+.successSended {
   transform: translate(-50%, -50%);
   background-color: rgb(105, 185, 25);
   top: 25%;
   left: 50%;
   text-align: center;
 }
-
+.userInfo {
+  background-color: rgb(105, 185, 25);
+  top: 75%;
+  left: 70%;
+  text-align: center;
+}
+.userInfo:hover {
+  background-color: rgb(83, 148, 17);
+}
+@media (max-width: 897px) {
+  .userInfo {
+    top: 81%;
+    left: 28%;
+  }
+}
 @media (min-width: 768px) {
   .box {
     max-width: 512px;

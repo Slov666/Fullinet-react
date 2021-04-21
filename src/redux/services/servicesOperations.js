@@ -4,6 +4,7 @@ import { setModalShop } from '../modal/modalAction';
 import { sendServicesWithCredentials } from '../../utils/fullinetAPI';
 import {
   makeSuccessSendedNotification,
+  makeSuccessUsersInfoNotification,
   makeAlertNotification,
 } from '../notifications/notificationOperations';
 
@@ -20,6 +21,11 @@ export const sendServices = (
       dispatch(
         makeSuccessSendedNotification(
           'Успішно відправлено, очікуйте на телефонний дзвінок'
+        )
+      );
+      dispatch(
+        makeSuccessUsersInfoNotification(
+          'Ваше замовлення вже в потрібних руках. Натисніть щоб закрити.'
         )
       );
       setTimeout(() => {

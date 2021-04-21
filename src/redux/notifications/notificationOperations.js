@@ -1,26 +1,36 @@
-import { setNotification, unsetNotification } from "./notificationActions";
+import { setNotification, unsetNotification } from './notificationActions';
 
 export const makeSuccessNotification = (text) => (dispatch) => {
   const params = {
-    type: "success",
+    type: 'success',
     message: text,
   };
   dispatch(setNotification(params));
-  setTimeout(() => dispatch(unsetNotification()), 4000);
+  setTimeout(() => dispatch(unsetNotification(params)), 4000);
 };
 export const makeAlertNotification = (text) => (dispatch) => {
   const params = {
-    type: "alert",
+    type: 'alert',
     message: text,
   };
   dispatch(setNotification(params));
-  setTimeout(() => dispatch(unsetNotification()), 4000);
+  setTimeout(() => dispatch(unsetNotification(params)), 4000);
 };
 export const makeSuccessSendedNotification = (text) => (dispatch) => {
   const params = {
-    type: "successSended",
+    type: 'successSended',
     message: text,
   };
   dispatch(setNotification(params));
-  setTimeout(() => dispatch(unsetNotification()), 3500);
+  setTimeout(() => dispatch(unsetNotification(params)), 3500);
+};
+export const makeSuccessUsersInfoNotification = (text) => (dispatch) => {
+  const params = {
+    type: 'userInfo',
+    message: text,
+  };
+  dispatch(setNotification(params));
+  setTimeout(() => {
+    dispatch(unsetNotification(params));
+  }, 300000);
 };

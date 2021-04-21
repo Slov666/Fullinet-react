@@ -10,9 +10,10 @@ import animation from './animation.module.css';
 
 const Notification = ({ message, type }) => {
   const overlay = useRef(null);
+  const messages = useRef(null);
   const handleClick = (e) => {
-    if (e.target === overlay.current) {
-      dispatch(unsetNotification());
+    if (e.target === overlay.current || e.target === messages.current) {
+      dispatch(unsetNotification({ message, type }));
     }
   };
   const dispatch = useDispatch();
@@ -28,7 +29,9 @@ const Notification = ({ message, type }) => {
         onClick={handleClick}
         className={classNames(styles.box, styles[type])}
       >
-        <p>{message}</p>
+        <p ref={messages} onClick={handleClick}>
+          {message}
+        </p>
       </div>
     </CSSTransition>
   );

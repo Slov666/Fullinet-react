@@ -9,6 +9,7 @@ import {
   getNameSelector,
   getPhoneSelector,
 } from '../../../../redux/tarrifs/tariffSelectors';
+import { makeAlertNotification } from '../../../../redux/notifications/notificationOperations';
 import {
   setNameAction,
   setPhoneAction,
@@ -58,6 +59,20 @@ export default function ConnectElement() {
   }, [nameRedux, phoneRedux, tariffRedux]);
   const handlerOnSubmit = async (e) => {
     e.preventDefault();
+    if (!token) {
+      dispatch(makeAlertNotification(t('validation.tokenAlert')));
+      return;
+    }
+    if (!validName) {
+      dispatch(makeAlertNotification(t('validation.alertIdName')));
+      return;
+    }
+    if (!validPhone) {
+      dispatch(makeAlertNotification(t('validation.alertIdPhone')));
+    }
+    if (!validAddress) {
+      dispatch(makeAlertNotification(t('validation.alertIdAddress')));
+    }
     const credentials = {
       name: nameRedux,
       phone: phoneRedux,

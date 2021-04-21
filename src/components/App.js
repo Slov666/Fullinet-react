@@ -12,6 +12,7 @@ import routes from '../utils/routes';
 function App() {
   const notification = useSelector(getNotificationSelector);
 
+  console.log(notification);
   return (
     <Suspense fallback={<Loader />}>
       <Layout>
@@ -22,9 +23,16 @@ function App() {
           <Redirect to="/home" />
         </Switch>
       </Layout>
-      {notification && (
-        <Notification type={notification.type} message={notification.message} />
-      )}
+      {notification &&
+        notification.map((item) => {
+          return (
+            <Notification
+              key={item.type}
+              type={item.type}
+              message={item.message}
+            />
+          );
+        })}
     </Suspense>
   );
 }

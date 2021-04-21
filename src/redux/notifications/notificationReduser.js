@@ -1,18 +1,15 @@
-import { createReducer } from "@reduxjs/toolkit";
-import { combineReducers } from "redux";
-import { setNotification, unsetNotification } from "./notificationActions";
+import { createReducer } from '@reduxjs/toolkit';
+import { setNotification, unsetNotification } from './notificationActions';
 
-const type = createReducer(null, {
-  [setNotification]: (_, action) => action.payload.type,
-});
-const message = createReducer(null, {
-  [setNotification]: (_, action) => action.payload.message,
-  [unsetNotification]: () => null,
-});
-
-const notificationReducer = combineReducers({
-  type,
-  message,
+const notificationReducer = createReducer([], {
+  [setNotification]: (state, { payload }) => {
+    const newState = state.filter((item) => item.type !== payload.type);
+    return [...newState, { type: payload.type, message: payload.message }];
+  },
+  [unsetNotification]: (state, { payload }) => {
+    const newState = state.filter((item) => item.message !== payload.message);
+    return [...newState];
+  },
 });
 
 export default notificationReducer;
