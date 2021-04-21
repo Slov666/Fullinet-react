@@ -35,6 +35,24 @@
   background-color: rgb(83, 148, 17);
 }
 @media (max-width: 897px) {
+  .box {
+    max-width: 280px;
+    padding: 2px 50px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    color: white;
+    position: fixed;
+    top: 4px;
+    right: 10px;
+    z-index: 90001111111111111111111111;
+  }
+  .successSended {
+    top: 24px;
+    right: 10px;
+  }
   .userInfo {
     top: 81%;
     left: 28%;

@@ -32,5 +32,5 @@ export const makeSuccessUsersInfoNotification = (text) => (dispatch) => {
   dispatch(setNotification(params));
   setTimeout(() => {
     dispatch(unsetNotification(params));
-  }, 300000);
+  }, 30000);
 };

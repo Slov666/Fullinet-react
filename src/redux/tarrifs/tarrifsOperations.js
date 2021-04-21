@@ -18,11 +18,13 @@ export const sendTariffs = (tariff, credentials, token) => (dispatch) => {
           'Успішно відправлено, очікуйте на телефонний дзвінок'
         )
       );
-      dispatch(
-        makeSuccessUsersInfoNotification(
-          'Ваше замовлення вже в потрібних руках. Натисніть щоб закрити.'
-        )
-      );
+      setTimeout(() => {
+        dispatch(
+          makeSuccessUsersInfoNotification(
+            'Ваше замовлення вже в потрібних руках. Натисніть щоб закрити.'
+          )
+        );
+      }, 2000);
       setTimeout(() => {
         dispatch(setModalConnect(false));
       }, 2000);

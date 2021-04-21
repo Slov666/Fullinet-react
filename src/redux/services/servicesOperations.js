@@ -18,16 +18,15 @@ export const sendServices = (
   sendServicesWithCredentials(sendServices, credentials, totalInfoToSend, token)
     .then((response) => {
       dispatch(action.orderServiceSuccess(response.status));
-      dispatch(
-        makeSuccessSendedNotification(
-          'Успішно відправлено, очікуйте на телефонний дзвінок'
-        )
-      );
-      dispatch(
-        makeSuccessUsersInfoNotification(
-          'Ваше замовлення вже в потрібних руках. Натисніть щоб закрити.'
-        )
-      );
+      dispatch(makeSuccessSendedNotification('Успішно відправлено'));
+      setTimeout(() => {
+        dispatch(
+          makeSuccessUsersInfoNotification(
+            'Ваше замовлення вже в потрібних руках. Натисніть щоб закрити.'
+          )
+        );
+      }, 2000);
+
       setTimeout(() => {
         dispatch(setModalShop(false));
       }, 2000);

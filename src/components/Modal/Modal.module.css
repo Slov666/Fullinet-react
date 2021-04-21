@@ -70,14 +70,16 @@
   .centerShop {
     top: 49px;
   }
-
+  .modalBackdrop {
+    background: none;
+  }
   .modalBase {
     background-color: var(--whiteColor);
     padding: 0px;
     height: 100%;
   }
   .center {
-    top: calc(50% - -38px);
+    top: calc(50% - -49px);
     padding: 20px 15px 10px;
   }
 }
