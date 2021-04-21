@@ -69,6 +69,7 @@ export default function ShopElements() {
 
   useEffect(() => {
     return () => {
+      // eslint-disable-next-line react-hooks/exhaustive-deps
       dispatch(removeCurrentIdFlip(idButtonForStyles.current));
     };
   }, []);

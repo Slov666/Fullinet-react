@@ -39,7 +39,7 @@
 .form {
   display: flex;
   flex-direction: column;
-  padding: 80px;
+  padding: 80px 80px 30px 80px;
 }
 .tariff {
   display: flex;
@@ -54,6 +54,8 @@
 }
 .containerBtn {
   margin: 0 auto;
+
+  text-align: center;
 }
 .sectionForm {
   display: grid;
@@ -79,8 +81,17 @@
   .validation {
     text-align: center;
   }
+  .containerBtn {
+    margin-bottom: 10px;
+  }
   .price_container_fliped {
     grid-template-rows: 56px 56px 56px;
+    padding: 7px 6px 0px 9px;
+    box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
+    border-radius: 3px;
+    height: 244px;
+    width: 260px;
+    background-color: hsl(0deg 0% 95% / 30%);
   }
   .sectionForm {
     display: none;
@@ -108,6 +119,7 @@
   .price {
     width: 197px;
     text-align: start;
+    margin: 0 auto;
     margin-bottom: 20px;
     padding: 0px 1px 0px 0px;
   }
@@ -136,16 +148,21 @@
   }
   .containerBtn {
     display: flex;
+    margin-left: 70px;
     justify-content: space-between;
-    width: 500px;
+    width: 470px;
     align-items: center;
   }
   .price_container_fliped {
     display: grid;
     grid-template-rows: 65px 65px 65px;
-    margin: 0px 0px 0px 133px;
+    margin: 0px 0px 0px 151px;
     width: 250px;
-    height: 230px;
+    padding: 10px;
+    height: 170px;
+    box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
+    border-radius: 3px;
+    background-color: hsl(0deg 0% 95% / 30%);
   }
   .price_container {
     display: inline-block;
@@ -156,7 +173,7 @@
   .validation {
     display: inline-block;
     margin-top: 20px;
-    width: 245px;
+    width: 155px;
   }
   .abonent {
     display: flex;
@@ -165,6 +182,7 @@
     width: 490px;
   }
   .price {
+    margin: 0 auto;
     margin-bottom: 30px;
     padding: 16px;
   }
