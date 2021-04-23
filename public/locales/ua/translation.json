@@ -57,7 +57,7 @@
   },
   "validation": {
     "valid": "Все вірно",
-    "invalidName": "мінмум 2 символа",
+    "invalidName": "мінімум 2 символа",
     "invalidPhone": "мінімум 8 символів",
     "invalidAddress": "мінімум 5 символів",
     "alertIdName": "Ім'я має містити мінмум 2 символа",

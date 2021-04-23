@@ -1,3 +1,9 @@
+.nav_mobile {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 168px;
+}
 .button {
   width: 100%;
   padding: 10px 10px 10px 0px;
@@ -57,5 +63,17 @@
     margin: 0;
     font-weight: 500;
     text-shadow: 0px 0px #000000;
+  }
+}
+
+@media (min-width: 350px) {
+  .nav_mobile {
+    width: 200px;
+  }
+}
+
+@media (min-width: 400px) {
+  .nav_mobile {
+    width: 223px;
   }
 }
