@@ -162,7 +162,7 @@ export default function Header() {
 
   return (
     <header className={style.header}>
-      <nav key={<MenuIcon />}>
+      <nav className={style.nav_mobile} key={<MenuIcon />}>
         <Button onClick={toggleDrawer(<MenuIcon />, true)}>
           {<MenuIcon style={{ color: '#fff' }} />}
         </Button>

@@ -59,7 +59,7 @@
   },
   "validation": {
     "valid": "Все верно",
-    "invalidName": "минимум 2 символов",
+    "invalidName": "минимум 2 символа",
     "invalidPhone": "минимум 8 символов",
     "invalidAddress": "минимум 5 символов",
     "alertIdName": "Имя должно быть минимум 2 символa",
