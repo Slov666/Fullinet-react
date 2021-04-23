@@ -30,32 +30,32 @@ export default function TableTariffs() {
           <React.Fragment key={id}>
             {index === 0 && (
               <p className={styles.titleOfTariffs}>
-                {t('tariffs_title.title_wifi')}
+                <span>{t('tariffs_title.title_wifi')}</span>
               </p>
             )}
             {index === 3 && (
               <p className={styles.titleOfTariffs}>
-                {t('tariffs_title.title_Vita')}
+                <span> {t('tariffs_title.title_Vita')}</span>
               </p>
             )}
             {index === 7 && (
               <p className={styles.titleOfTariffs}>
-                {t('tariffs_title.title_Pirogiv')}
+                <span>{t('tariffs_title.title_Pirogiv')}</span>
               </p>
             )}
             {index === 11 && (
               <p className={styles.titleOfTariffs}>
-                {t('tariffs_title.title_Damba')}
+                <span> {t('tariffs_title.title_Damba')}</span>
               </p>
             )}
             {index === 14 && (
               <p className={styles.titleOfTariffs}>
-                {t('tariffs_title.title_Novi_Bezradichi')}
+                <span> {t('tariffs_title.title_Novi_Bezradichi')}</span>
               </p>
             )}
             {index === 18 && (
               <p className={styles.titleOfTariffs}>
-                {t('tariffs_title.title_Green_wood')}
+                <span> {t('tariffs_title.title_Green_wood')}</span>
               </p>
             )}
 

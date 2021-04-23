@@ -1,4 +1,3 @@
-
 .header {
   background-color: var(--headerColor);
   padding: 0;
@@ -28,16 +27,16 @@
   background-color: rgba(0, 0, 0, 0.2);
 }
 .logo {
-  color: var(--primaryColor);
-  text-shadow: #332f1e 2px 0 0px;
-  font-size: 23px;
+  text-shadow: #6f6f6f 2px 0 0px;
+  font-size: 22px;
+  color: #f0f8ff;
   transition: all 350ms;
 }
 .logo:hover,
 .logo:focus {
   transform: scale(1.05);
 }
-.qty{
+.qty {
   position: absolute;
   top: 5px;
   left: 31px;

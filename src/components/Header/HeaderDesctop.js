@@ -50,9 +50,7 @@ export default function HeaderDesctop() {
   return (
     <nav className={style.header}>
       <NavLink to={'/home'} exact>
-        <p className={style.logo}>
-          <span>FULL</span>INET
-        </p>
+        <h6 className={style.logo}>FULLINET</h6>
       </NavLink>
       <div className={style.menu}>
         <NavLink to={'/home'} exact>
