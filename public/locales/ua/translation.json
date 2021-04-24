@@ -30,7 +30,13 @@
     "main": "Головна",
     "services": "Послуги",
     "office": "Кабінет",
-    "connect": "Підключення"
+    "connect": "Підключення",
+    "WIFI": "Тарифи Wi-Fi",
+    "VitaLitovska": "Тарифи Віта-Литовська",
+    "Pirogiv": "Тарифи Пирогів",
+    "Damba": "Тарифи Дамба",
+    "Bezradichi": "Тарифи Безрадичі",
+    "GreenWood": "Тарифи Green Wood"
   },
   "recapchaHL": "uk",
   "contact_info": {
@@ -272,14 +278,14 @@
       "id": "19",
       "title_Vita": "Тарифи на оптичний інтернет Green Wood",
       "name": "Базовий",
-      "speed": "100/ Мбіт/сек",
+      "speed": "до 100/ Мбіт/сек",
       "cost": "250"
     },
     {
       "id": "20",
       "title_Vita": "Тарифи на оптичний інтернет Green Wood",
       "name": "ПРОФІ",
-      "speed": "1000/ Мбіт/сек",
+      "speed": "100/ Мбіт/сек",
       "cost": "300"
     },
     {

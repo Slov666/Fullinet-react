@@ -9,7 +9,6 @@ import { cartSelector } from '../../redux/shop/shopSelectors';
 import Drawer from '@material-ui/core/Drawer';
 import Button from '@material-ui/core/Button';
 import List from '@material-ui/core/List';
-import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -20,6 +19,8 @@ import MenuIcon from '@material-ui/icons/Menu';
 import Typography from '@material-ui/core/Typography';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import IconButton from '@material-ui/core/IconButton';
+import NavigationIcon from '@material-ui/icons/Navigation';
+
 
 import { useTranslation } from 'react-i18next';
 import '../../utils/i18next';
@@ -45,6 +46,7 @@ export default function Header() {
   }, [cart, cartCount]);
 
   const dispatch = useDispatch();
+
   const [locales, setLocales] = useState(null);
 
   const { t, i18n } = useTranslation();
@@ -78,6 +80,12 @@ export default function Header() {
         </button>
       ),
       icon: <ShoppingCartIcon onClick={() => dispatch(setModalShop(true))} />,
+    },
+    {
+      link: (
+        <a href="https://my.fullinet.com/cgi-bin/stat.pl">{t('nav.office')}</a>
+      ),
+      icon: <MailIcon />,
     },
   ];
   const useStyles = makeStyles({
@@ -140,18 +148,14 @@ export default function Header() {
           );
         })}
       </List>
-      <Divider />
+
       <List>
         {/* в массив ниже могу добавить NavLink */}
-        {[
-          <a href="https://my.fullinet.com/cgi-bin/stat.pl">
-            {t('nav.office')}
-          </a>,
-        ].map((text, index) => (
+        {[].map((text, index) => (
           <ListItem button key={index}>
             <ListItemIcon>
               {/* {index % 2 === 0 ? <ContactPhoneIcon /> : <MailIcon />} */}
-              <MailIcon />
+              <NavigationIcon />
             </ListItemIcon>
             <ListItemText primary={text} />
           </ListItem>
@@ -177,7 +181,7 @@ export default function Header() {
         <Drawer
           anchor={'left'}
           open={state[(<MenuIcon />)]}
-          onClose={toggleDrawer(<MenuIcon />, false)}
+          onClose={toggleDrawer(<Button />, false)}
         >
           {list(<MenuIcon />)}
         </Drawer>

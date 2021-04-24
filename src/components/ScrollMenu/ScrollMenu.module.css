@@ -1,0 +1,24 @@
+.menu {
+  position: fixed;
+  bottom: 35px;
+  z-index: 10000;
+}
+.tariff_selector {
+  border: 2px solid rgb(148, 148, 148);
+  border-radius: 8px;
+  background-color: rgb(255 241 119 / 80%);
+}
+.link {
+  width: 100%;
+  padding: 3px 0px 3px;
+}
+@media (min-width: 897px) {
+  .menu {
+    top: 70px;
+  }
+}
+@media (min-width: 2000px) {
+  .menu {
+    left: 20%;
+  }
+}

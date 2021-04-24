@@ -29,32 +29,32 @@ export default function TableTariffs() {
         {tariffs.map(({ name, cost, speed, about_wifi, id }, index) => (
           <React.Fragment key={id}>
             {index === 0 && (
-              <p className={styles.titleOfTariffs}>
+              <p className={styles.titleOfTariffs} id="Wi-Fi">
                 <span>{t('tariffs_title.title_wifi')}</span>
               </p>
             )}
             {index === 3 && (
-              <p className={styles.titleOfTariffs}>
+              <p className={styles.titleOfTariffs} id="VitaLitovska">
                 <span> {t('tariffs_title.title_Vita')}</span>
               </p>
             )}
             {index === 7 && (
-              <p className={styles.titleOfTariffs}>
+              <p className={styles.titleOfTariffs} id="Pirogiv">
                 <span>{t('tariffs_title.title_Pirogiv')}</span>
               </p>
             )}
             {index === 11 && (
-              <p className={styles.titleOfTariffs}>
+              <p className={styles.titleOfTariffs} id="Damba">
                 <span> {t('tariffs_title.title_Damba')}</span>
               </p>
             )}
             {index === 14 && (
-              <p className={styles.titleOfTariffs}>
+              <p className={styles.titleOfTariffs} id="Bezradichi">
                 <span> {t('tariffs_title.title_Novi_Bezradichi')}</span>
               </p>
             )}
             {index === 18 && (
-              <p className={styles.titleOfTariffs}>
+              <p className={styles.titleOfTariffs} id="GreenWood">
                 <span> {t('tariffs_title.title_Green_wood')}</span>
               </p>
             )}

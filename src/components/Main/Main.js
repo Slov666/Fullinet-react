@@ -2,18 +2,14 @@ import React from 'react';
 import useToggle from '../../hooks/useToggle';
 import { CSSTransition } from 'react-transition-group';
 import animate from './animate.module.css';
-import { useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import '../../utils/i18next';
 
-
+import ScrollMenu from '../ScrollMenu/ScrollMenu';
 import MenuIcon from '@material-ui/icons/Menu';
 import IconButton from '@material-ui/core/IconButton';
 
 import style from './Main.module.css';
-
-// test
-// import css from '../../components/Tariffs/Tariffs.module.css';
 
 export default function Main() {
   const [isOpenSchedule, onClickSchedule] = useToggle();
@@ -21,46 +17,10 @@ export default function Main() {
 
   const { t } = useTranslation();
 
-  //test
-  // const [notIncluded, onClicknotIncluded] = useToggle();
-
   return (
     <main className={style.container}>
       <article className={style.primaryContainer}>
-        {/* <>
-          <div className={css.container_dropMenu}>
-            <p onClick={onClicknotIncluded} className={css.notIncluded}>
-              <span>
-                {' '}
-                На даном етапі сайт знаходиться в розробці. Натисніть щоб
-                дізнатись детальніше
-              </span>
-              <IconButton onClick={() => onClicknotIncluded}>
-                <MenuIcon />
-              </IconButton>
-            </p>
-            <CSSTransition
-              in={notIncluded}
-              timeout={300}
-              classNames={animate}
-              unmountOnExit
-            >
-              <>
-                {notIncluded && (
-                  <ul className={css.notIncluded_ul}>
-                    <li>
-                      Ви можете дивитись інформацію про тарифи.
-                    </li>
-                    <li>
-                      Ви можите замовити тариф чи послугу по телефону.
-                      Детальніше в контактах{' '}
-                    </li>
-                  </ul>
-                )}
-              </>
-            </CSSTransition>
-          </div>
-        </> */}
+        <ScrollMenu />
 
         <div className={style.contact_info}>
           <p onClick={onClickSchedule} className={style.contact_info_schedule}>
