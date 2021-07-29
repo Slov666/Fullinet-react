@@ -25,6 +25,7 @@ export default function Image({ alt, size, ...rest }) {
           src="images/DefaultServices-min.png"
           alt={alt || 'Default Alt'}
           className={style.img}
+          loading='lazy'
         />
       )}
       {!isError && isLoading && <Loader width={100} position="card" />}
@@ -35,6 +36,7 @@ export default function Image({ alt, size, ...rest }) {
         alt={alt || 'Default Alt'}
         onLoad={handleLoad}
         onError={handleError}
+        loading='lazy'
         {...rest}
       />
     </div>

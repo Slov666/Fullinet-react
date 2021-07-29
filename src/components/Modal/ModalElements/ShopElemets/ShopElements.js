@@ -65,7 +65,7 @@ export default function ShopElements() {
   const cart = useSelector(cartSelector);
   const dispatch = useDispatch();
   const { t } = useTranslation();
-  useTitle('Корзина');
+  useTitle('Корзина || Fullinet');
   const isMobile = useIsMobile();
   const recaptchaRef = React.useRef();
 
