@@ -15,7 +15,7 @@
 }
 .contact_info_schedule {
   margin-bottom: 12px;
-  background-color: rgba(241, 241, 241, 0.4);
+  background-color: rgba(241, 241, 241, 0.7);
   box-shadow: 0 3px 8px 0 rgb(0 0 0 / 20%);
   text-align: center;
   padding: 0px 0px 0px 25px;
@@ -31,7 +31,7 @@
 }
 .contact_info_schedule:hover,
 .contact_info_schedule:focus {
-  background-color: rgba(241, 241, 241, 0.6);
+  background-color: rgba(241, 241, 241, 0.8);
 }
 .contact_info_schedule span {
   margin: 0 auto;
@@ -57,7 +57,7 @@
 
 @media (min-width: 767px) {
   .container {
-    padding-top: 80px;
+    padding-top: 120px
   }
 }
 @media (min-width: 897px) {

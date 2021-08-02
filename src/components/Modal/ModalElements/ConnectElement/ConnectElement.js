@@ -57,6 +57,7 @@ export default function ConnectElement() {
     if (tariffRedux && tariffRedux.length >= 5) setValidAddress(true);
     if (tariffRedux && tariffRedux.length < 5) setValidAddress(false);
   }, [nameRedux, phoneRedux, tariffRedux]);
+  
   const handlerOnSubmit = async (e) => {
     e.preventDefault();
     if (!token) {
