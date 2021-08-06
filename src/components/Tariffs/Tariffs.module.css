@@ -7,7 +7,7 @@
   align-items: center;
   justify-content: space-around;
   min-height: 172px;
-  background-color: rgba(241, 241, 241, 0.4);
+  background-color: rgba(241, 241, 241, 0.7);
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   margin-bottom: 20px;
   border-radius: 3px;
@@ -15,7 +15,7 @@
 }
 .card__container:hover,
 .card__container:focus {
-  background-color: rgba(241, 241, 241, 0.6);
+  background-color: rgba(241, 241, 241, 0.8);
 }
 .card__container_flipped {
   composes: card__container;
@@ -122,7 +122,7 @@
 }
 .notIncluded {
   margin-bottom: 12px;
-  background-color: rgba(243, 124, 124, 0.4);
+  background-color: rgba(243, 124, 124, 0.7);
   box-shadow: 0 3px 8px 0 rgb(0 0 0 / 20%);
   border-radius: 4px;
   padding: 0px 0px 0px 10px;
@@ -138,7 +138,7 @@
 }
 .notIncluded:hover,
 .notIncluded:focus {
-  background-color: rgba(243, 124, 124, 0.6);
+  background-color: rgba(243, 124, 124, 0.8);
 }
 .notIncluded span {
   margin: 0 auto;

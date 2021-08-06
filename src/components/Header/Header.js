@@ -20,7 +20,7 @@ import Typography from '@material-ui/core/Typography';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import IconButton from '@material-ui/core/IconButton';
 import NavigationIcon from '@material-ui/icons/Navigation';
-
+import { Menu, MenuItem } from '@material-ui/core';
 
 import { useTranslation } from 'react-i18next';
 import '../../utils/i18next';
@@ -28,6 +28,17 @@ import '../../utils/i18next';
 import style from './Header.module.css';
 
 export default function Header() {
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [cartCount, setCartCount] = useState(0);
+
+  const handleClickMenu = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
   const useStyle = makeStyles(() => ({
     root: {
       color: 'rgb(235, 235, 235)',
@@ -35,8 +46,9 @@ export default function Header() {
     },
   }));
   const styles = useStyle();
+
   const cart = useSelector(cartSelector);
-  const [cartCount, setCartCount] = useState(0);
+
   useEffect(() => {
     let count = 0;
     cart.forEach((item) => {
@@ -50,7 +62,7 @@ export default function Header() {
   const [locales, setLocales] = useState(null);
 
   const { t, i18n } = useTranslation();
-  const changleLanguage = (lang) => {
+  const changeLanguage = (lang) => {
     i18n.changeLanguage(lang);
   };
   const listItems = [
@@ -83,7 +95,9 @@ export default function Header() {
     },
     {
       link: (
-        <a href="https://my.fullinet.com/cgi-bin/stat.pl">{t('nav.office')}</a>
+        <button className={style.button} onClick={handleClickMenu}>
+          {t('nav.office')}
+        </button>
       ),
       icon: <MailIcon />,
     },
@@ -100,7 +114,7 @@ export default function Header() {
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const onClickLang = useCallback((e) => {
-    changleLanguage(e.target.id === 'ua' ? 'ru' : 'ua');
+    changeLanguage(e.target.id === 'ua' ? 'ru' : 'ua');
   });
 
   useEffect(() => {
@@ -199,6 +213,25 @@ export default function Header() {
           <div className={style.qty}>{cartCount}</div>
         </IconButton>
       </div>
+
+      <Menu
+        id="simple-menu"
+        anchorEl={anchorEl}
+        keepMounted
+        open={Boolean(anchorEl)}
+        onClose={handleClose}
+      >
+        <MenuItem>
+          <a href="https://my.fullinet.com/cgi-bin/stat.pl">
+            {t('nav.oldOffice')}
+          </a>
+        </MenuItem>
+        <MenuItem>
+          <a href="https://stat.fullinet.com/cgi-bin/stat.pl">
+            {t('nav.newOffice')}
+          </a>
+        </MenuItem>
+      </Menu>
     </header>
   );
 }

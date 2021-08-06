@@ -1,7 +1,6 @@
 import { createReducer } from '@reduxjs/toolkit';
 
-import {  setCurrentIdFlip, removeCurrentIdFlip } from './flipedAction';
-
+import { setCurrentIdFlip, removeCurrentIdFlip } from './flipedAction';
 
 export const flipId = createReducer([], {
   [setCurrentIdFlip]: (state, { payload }) => {
