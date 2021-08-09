@@ -7,7 +7,7 @@ import {
     makeSuccessUsersInfoNotification,
     makeAlertNotification,
 } from '../notifications/notificationOperations';
-import {removeLoad, setLoad} from "../loader/loaderAction";
+import {setLoad} from "../loader/loaderAction";
 
 export const sendServices = (
     sendServices,
@@ -38,5 +38,5 @@ export const sendServices = (
                 action.orderServiceError(pathOr('', ['response', 'status'], err))
             );
             dispatch(makeAlertNotification('Щось пішло не так'));
-        }).finally(() => dispatch(removeLoad(false)));
+        }).finally(() => dispatch(setLoad(false)));
 };
