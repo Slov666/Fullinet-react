@@ -13,7 +13,7 @@ export default function ModalConnect() {
   const closeModal = () => dispatch(setModalShop(false));
   return isOpen ? (
     <ModalPortal>
-      <Modal onClose={closeModal} position="centerShop">
+      <Modal onClose={closeModal} position="centerShop" >
         <ShopElements />
       </Modal>
     </ModalPortal>

@@ -18,6 +18,7 @@ import notification from './notifications/notificationReduser';
 import {  flipId } from './fliped/flipedReducer';
 import { responseTariff } from './tarrifs/tariffsReducer';
 import { credentials } from './tarrifs/tariffsReducer';
+import {load} from "./loader/loaderReducer"
 
 const persistConfigCart = {
   key: 'cart',
@@ -27,7 +28,7 @@ const persisConfigCredentials = {
   key: 'credentials',
   storage,
 };
-const ui = combineReducers({ modal, notification, activeflipId:  flipId});
+const ui = combineReducers({ modal, notification, activeflipId:  flipId, load});
 
 const persistShop = persistReducer(persistConfigCart, shop);
 const persistCredentials = persistReducer(persisConfigCredentials, credentials);

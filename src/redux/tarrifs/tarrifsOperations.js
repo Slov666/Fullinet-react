@@ -7,9 +7,11 @@ import {
   makeAlertNotification,
   makeSuccessUsersInfoNotification,
 } from '../notifications/notificationOperations';
+import {removeLoad, setLoad} from "../loader/loaderAction";
 
 export const sendTariffs = (tariff, credentials, token) => (dispatch) => {
   dispatch(action.orderTariffRequest);
+  dispatch(setLoad(true))
   sendTariffWithCredentials(tariff, credentials, token)
     .then((response) => {
       dispatch(action.orderTariffSuccess(response.status));
@@ -34,5 +36,5 @@ export const sendTariffs = (tariff, credentials, token) => (dispatch) => {
         action.orderTariffError(pathOr('', ['response', 'status'], err))
       );
       dispatch(makeAlertNotification('Щось пішло не так'));
-    });
+    }).finally(() => dispatch(removeLoad(false)));
 };

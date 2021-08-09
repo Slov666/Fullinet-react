@@ -1,0 +1,1 @@
+export const loadingSelector = (state) => state.ui.load

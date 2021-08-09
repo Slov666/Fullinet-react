@@ -61,6 +61,12 @@
   display: grid;
   grid-template-rows: 1fr 200px;
 }
+.loadingStyle{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
 .container_buttonForm {
   position: absolute;
   bottom: 110px;
