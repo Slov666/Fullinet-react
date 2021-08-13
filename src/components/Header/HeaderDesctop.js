@@ -49,7 +49,7 @@ export default function HeaderDesctop() {
   const changeLanguage = (lang) => {
     i18n.changeLanguage(lang);
   };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };

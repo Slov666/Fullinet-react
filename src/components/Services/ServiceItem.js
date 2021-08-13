@@ -41,13 +41,9 @@ export default function ServiceItem({
   alt,
 }) {
   const { t } = useTranslation();
-
   const [isFlip, onFlip] = useToggle();
-
   const flipId = useSelector(idFlipSelector(_id));
-
   const dispatch = useDispatch();
-
   const isMobile = useMobile();
 
   const {

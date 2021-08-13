@@ -10,7 +10,6 @@ import '../../../../utils/i18next';
 import ServicesItemShop from './ShopItems/ServicesItemShop';
 import {cartSelector} from '../../../../redux/shop/shopSelectors';
 import {idFlipSelector} from '../../../../redux/fliped/flipedSelector';
-import {modalShopSelector} from '../../../../redux/modal/modalSelectors';
 
 import {
     getAddressSelector,
@@ -41,6 +40,7 @@ import ReCAPTCHA from 'react-google-recaptcha';
 import styles from './ShopElemets.module.css';
 import Loaders from "../../../Loader/Loader";
 import {loadingSelector} from "../../../../redux/loader/loaderSelector";
+import useValiadField from "../../../../hooks/useValidateField";
 
 export default function ShopElements() {
     const [totalPriceOnePay, setTotalPriceOnePay] = useState(0);
@@ -50,9 +50,11 @@ export default function ShopElements() {
     const [totalItems, setTotalItems] = useState(0);
 
     const [token, setToken] = useState('');
-    const [validName, setValidName] = useState(false);
-    const [validPhone, setValidPhone] = useState(false);
-    const [validAddress, setValidAddress] = useState(false);
+
+    const [validName, setValidName] = useValiadField()
+    const [validPhone, setValidPhone] = useValiadField()
+    const [validAddress, setValidAddress] = useValiadField()
+
 
     const [isFlip, onFlip] = useToggle();
 
@@ -79,14 +81,9 @@ export default function ShopElements() {
         };
     }, [dispatch, isAnyModalOpen]);
     useEffect(() => {
-        if (nameRedux && nameRedux.length >= 2) setValidName(true);
-        if (nameRedux && nameRedux.length < 2) setValidName(false);
-
-        if (phoneRedux && phoneRedux.length > 8) setValidPhone(true);
-        if (phoneRedux && phoneRedux.length < 8) setValidPhone(false);
-
-        if (tariffRedux && tariffRedux.length >= 5) setValidAddress(true);
-        if (tariffRedux && tariffRedux.length < 5) setValidAddress(false);
+        setValidName(nameRedux)
+        setValidPhone(phoneRedux)
+        setValidAddress(tariffRedux)
     }, [nameRedux, phoneRedux, tariffRedux]);
     useEffect(() => {
         let itemsOnePay = 0;
@@ -121,10 +118,10 @@ export default function ShopElements() {
     ]);
     const handlerOnSubmit = (e) => {
         e.preventDefault();
-        // if (!token) {
-        //     dispatch(makeAlertNotification(t('validation.tokenAlert')));
-        //     return;
-        // }
+        if (!token) {
+            dispatch(makeAlertNotification(t('validation.tokenAlert')));
+            return;
+        }
         if (!validName) {
             dispatch(makeAlertNotification(t('validation.alertIdName')));
             return;
@@ -155,28 +152,25 @@ export default function ShopElements() {
             totalItemsOnePay: totalItemsOnePay,
             totalItems: totalItems,
         };
-        // if (token) {
+        if (token) {
         dispatch(
             sendServices(servicesToSend, credentials, totalInfoToSend, token)
         );
         return;
-        // }
+        }
     };
 
     const handleOnChangeName = ({target: {value}}) => {
         dispatch(setNameAction(value));
-        if (value.length >= 2) setValidName(true);
-        if (value.length < 2) setValidName(false);
+        setValidName(value)
     };
     const handleOnChangePhone = ({target: {value}}) => {
         dispatch(setPhoneAction(value));
-        if (value.length > 8) setValidPhone(true);
-        if (value.length < 8) setValidPhone(false);
+        setValidPhone(value)
     };
     const handleOnChangeAddress = ({target: {value}}) => {
         dispatch(setAddressAction(value));
-        if (value.length >= 5) setValidAddress(true);
-        if (value.length < 5) setValidAddress(false);
+        setValidAddress(value)
     };
     const handleOnClickNext = (e) => {
         onFlip();
@@ -270,7 +264,7 @@ export default function ShopElements() {
                                 >
                                     {validName
                                         ? t('validation.valid')
-                                        : t('validation.invalidName')}
+                                        : t('validation.invalidField')}
                                 </p>
                                 <MyInput
                                     type="text"
@@ -287,7 +281,7 @@ export default function ShopElements() {
                                 >
                                     {validPhone
                                         ? t('validation.valid')
-                                        : t('validation.invalidPhone')}
+                                        : t('validation.invalidField')}
                                 </p>
                                 <MyInput
                                     type="text"
@@ -304,18 +298,18 @@ export default function ShopElements() {
                                 >
                                     {validAddress
                                         ? t('validation.valid')
-                                        : t('validation.invalidAddress')}
+                                        : t('validation.invalidField')}
                                 </p>
                             </div>
 
                             <div className={styles.containerBtn}>
                                 <ReCAPTCHA
-                                  ref={recaptchaRef}
-                                  sitekey={process.env.REACT_APP_GOOGLE_KEY}
-                                  onChange={(token) => setToken(token)}
-                                  onExpired={() => setToken('')}
-                                  size={isMobile ? 'compact' : 'normal'}
-                                  hl={t('recapchaHL')}
+                                    ref={recaptchaRef}
+                                    sitekey={process.env.REACT_APP_GOOGLE_KEY}
+                                    onChange={(token) => setToken(token)}
+                                    onExpired={() => setToken('')}
+                                    size={isMobile ? 'compact' : 'normal'}
+                                    hl={t('recapchaHL')}
                                 />
                                 <Button
                                     variant="contained"
@@ -384,7 +378,7 @@ export default function ShopElements() {
                                     >
                                         {validName
                                             ? t('validation.valid')
-                                            : t('validation.invalidName')}
+                                            : t('validation.invalidField')}
                                     </p>
                                     <MyInput
                                         type="text"
@@ -401,7 +395,7 @@ export default function ShopElements() {
                                     >
                                         {validPhone
                                             ? t('validation.valid')
-                                            : t('validation.invalidPhone')}
+                                            : t('validation.invalidField')}
                                     </p>
                                     <MyInput
                                         type="text"
@@ -418,7 +412,7 @@ export default function ShopElements() {
                                     >
                                         {validAddress
                                             ? t('validation.valid')
-                                            : t('validation.invalidAddress')}
+                                            : t('validation.invalidField')}
                                     </p>
                                 </div>
 

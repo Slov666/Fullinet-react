@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import useIsMobile from '../../hooks/useMobile';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 

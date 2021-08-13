@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import classNames from 'classnames';
 import {useSelector, useDispatch} from 'react-redux';
 import styles from './ConnectElemet.module.css';
+import useValiadField from "../../../../hooks/useValidateField"
 
 import {modalConnectSelector} from '../../../../redux/modal/modalSelectors';
 import {
@@ -46,19 +47,15 @@ export default function ConnectElement() {
     const dispatch = useDispatch();
 
     const [token, setToken] = useState('');
-    const [validName, setValidName] = useState(false);
-    const [validPhone, setValidPhone] = useState(false);
-    const [validAddress, setValidAddress] = useState(false);
+
+    const [validName, setValidName] = useValiadField()
+    const [validPhone, setValidPhone] = useValiadField()
+    const [validAddress, setValidAddress] = useValiadField()
 
     useEffect(() => {
-        if (nameRedux && nameRedux.length >= 2) setValidName(true);
-        if (nameRedux && nameRedux.length < 2) setValidName(false);
-
-        if (phoneRedux && phoneRedux.length > 8) setValidPhone(true);
-        if (phoneRedux && phoneRedux.length < 8) setValidPhone(false);
-
-        if (tariffRedux && tariffRedux.length >= 5) setValidAddress(true);
-        if (tariffRedux && tariffRedux.length < 5) setValidAddress(false);
+        setValidName(nameRedux);
+        setValidPhone(phoneRedux)
+        setValidAddress(tariffRedux)
     }, [nameRedux, phoneRedux, tariffRedux]);
 
     const handlerOnSubmit = async (e) => {
@@ -96,18 +93,15 @@ export default function ConnectElement() {
 
     const handleOnChangeName = ({target: {value}}) => {
         dispatch(setNameAction(value));
-        if (value.length >= 2) setValidName(true);
-        if (value.length < 2) setValidName(false);
+        setValidName(value)
     };
     const handleOnChangePhone = ({target: {value}}) => {
         dispatch(setPhoneAction(value));
-        if (value.length > 8) setValidPhone(true);
-        if (value.length < 8) setValidPhone(false);
+        setValidPhone(value)
     };
     const handleOnChangeAddress = ({target: {value}}) => {
         dispatch(setAddressAction(value));
-        if (value.length >= 5) setValidAddress(true);
-        if (value.length < 5) setValidAddress(false);
+        setValidAddress(value)
     };
 
     return isMobile ? (
@@ -149,7 +143,7 @@ export default function ConnectElement() {
                                 validName && styles.valid
                             )}
                         >
-                            {validName ? t('validation.valid') : t('validation.invalidName')}
+                            {validName ? t('validation.valid') : t('validation.invalidField')}
                         </p>
                         <MyInput
                             type="text"
@@ -166,7 +160,7 @@ export default function ConnectElement() {
                         >
                             {validPhone
                                 ? t('validation.valid')
-                                : t('validation.invalidPhone')}
+                                : t('validation.invalidField')}
                         </p>
                         <MyInput
                             type="text"
@@ -183,7 +177,7 @@ export default function ConnectElement() {
                         >
                             {validAddress
                                 ? t('validation.valid')
-                                : t('validation.invalidAddress')}
+                                : t('validation.invalidField')}
                         </p>
                     </div>
 
@@ -244,7 +238,7 @@ export default function ConnectElement() {
                     <p
                         className={classNames(styles.validation, validName && styles.valid)}
                     >
-                        {validName ? t('validation.valid') : t('validation.invalidName')}
+                        {validName ? t('validation.valid') : t('validation.invalidField')}
                     </p>
                     <MyInput
                         type="text"
@@ -259,7 +253,7 @@ export default function ConnectElement() {
                             validPhone && styles.valid
                         )}
                     >
-                        {validPhone ? t('validation.valid') : t('validation.invalidPhone')}
+                        {validPhone ? t('validation.valid') : t('validation.invalidField')}
                     </p>
                     <MyInput
                         type="text"
@@ -276,7 +270,7 @@ export default function ConnectElement() {
                     >
                         {validAddress
                             ? t('validation.valid')
-                            : t('validation.invalidAddress')}
+                            : t('validation.invalidField')}
                     </p>
                 </div>
 

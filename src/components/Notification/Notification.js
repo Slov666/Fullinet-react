@@ -19,7 +19,7 @@ const Notification = ({ message, type }) => {
   const dispatch = useDispatch();
   return (
     <CSSTransition
-      in={message ? true : false}
+      in={!!message}
       unmountOnExit
       classNames={animation}
       timeout={250}

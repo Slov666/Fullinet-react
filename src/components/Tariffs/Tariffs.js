@@ -1,11 +1,9 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import styles from './Tariffs.module.css';
 import { CSSTransition } from 'react-transition-group';
 import animate from './animate.module.css';
 import '../../utils/i18next';
 
-import { useSelector } from 'react-redux';
-import useMobile from '../../hooks/useMobile';
 import useToggle from '../../hooks/useToggle';
 import { useTranslation } from 'react-i18next';
 import useTitle from '../../hooks/useTitle';

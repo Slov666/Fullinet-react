@@ -22,7 +22,7 @@ export default function Image({ alt, size, ...rest }) {
     <div className={classNames(style.container, style[size])}>
       {isError && !isLoading && (
         <img
-          src="images/DefaultServices-min.png"
+          src='images/DefaultServices-min.png'
           alt={alt || 'Default Alt'}
           className={style.img}
           loading='lazy'
